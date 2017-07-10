@@ -11,13 +11,8 @@ class TaskList extends Component{
   constructor(props) {
   super(props);
 
-  this.state = { tasks: [],
-                 lowPriority: true,
-                 medPriority: true,
-                 highPriority: true,
-                 todayOnly: false};
   this.filter = this.filter.bind(this);
-  this.updateFilter = this.updateFilter.bind(this);
+  //this.updateFilter = this.updateFilter.bind(this);
 }
 
   renderTask(task){
@@ -32,37 +27,21 @@ class TaskList extends Component{
       <div>
         <h3>Task List</h3>
         <BarContainer />
-        <Link className="pure-button PlusBtn pull-right /new" to="/new">
-          <i className="fa fa-plus" aria-hidden="true"></i>
-        </Link>  
+        <Link className="pull-right" to="/new">Add</Link>
         {todos.map(this.renderTask)}
       </div>
     );
   }
 
-
-updateFilter(event){
-    const buttonClicked = event.target.id;
-    if(buttonClicked == "lowPriority"){
-      this.setState({lowPriority: !this.state.lowPriority});
-    }
-    if(buttonClicked == "medPriority"){
-      this.setState({medPriority: !this.state.medPriority});
-    }
-    if(buttonClicked == "highPriority"){
-      this.setState({highPriority: !this.state.highPriority});
-    }
-    {this.renderTask()}
-  }
-
   filter(){
-    this.props.fetchTasks();
-    var low = this.state.lowPriority;
-    var med= this.state.medPriority
-    var high = this.state.highPriority;
-    var today = this.state.todayOnly;
+    console.log(this.props.filters);
+    var low = this.props.filters.lowPriority;
+    var med = this.props.filters.medPriority;;
+    var high = this.props.filters.highPriority;;
+    var today = false;
 
     var filterdTodos = this.props.tasks.slice();
+    
     if(!low){
       filterdTodos = filterdTodos.filter(t => t.priority != 0)
     }
@@ -92,10 +71,7 @@ updateFilter(event){
       //connection between redux and component
       return {
         tasks: state.tasks,
-        lowPriority: state.lowPriority,
-        medPriority: state.medPriority,
-        highPriority: state.highPriority,
-        todayOnly: state.todayOnly
+        filters: state.filters
       };
     }
 
