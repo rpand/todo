@@ -1,6 +1,5 @@
 export const FETCH_TASKS = "fetch_tasks";
 export const SET_SORT ="set_sort";
-export const MARK_AS_COMPLETE = "mark_as_complete";
 export const UPDATE_FILTERS = "update_filters";
 export const TOGGLE_COMPLETE = "toggle_complete";
 
