@@ -32,7 +32,9 @@ class TaskList extends Component{
       <div>
         <h3>Task List</h3>
         <BarContainer />
-        <Link className="pull-right" to="/new">Add</Link>
+        <Link className="pure-button PlusBtn pull-right /new" to="/new">
+          <i className="fa fa-plus" aria-hidden="true"></i>
+        </Link>  
         {todos.map(this.renderTask)}
       </div>
     );
