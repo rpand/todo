@@ -1,9 +1,7 @@
 export const FETCH_TASKS = "fetch_tasks";
 export const SET_SORT ="set_sort";
 export const MARK_AS_COMPLETE = "mark_as_complete";
-export const UPDATE_LOW = "update_low";
-export const UPDATE_MED = "update_med";
-export const UPDATE_HIGH = "update_high";
+export const UPDATE_FILTERS = "update_filters";
 
 export function fetchTasks(){
   //fetch tasks from json object or HTML5 session storage
@@ -19,6 +17,13 @@ export function setSort(sortFunction){
   };
 }
 
+export function updateFilters(changedObject){
+  return {
+    type: UPDATE_FILTERS,
+    payload: changedObject
+  };
+}
+
 //mark the task item as complete
 export function markAsComplete(id){
 
@@ -26,22 +31,4 @@ export function markAsComplete(id){
     type: MARK_AS_COMPLETE,
     payload: id
   };
-}
-
-export function updateLow(){
-  return {
-      type: UPDATE_LOW
-    };
-}
-
-export function updateMed(){
-  return {
-      type: UPDATE_MED
-    };
-}
-
-export function updateHigh(){
-  return {
-      type: UPDATE_HIGH
-    };
 }
