@@ -53,8 +53,8 @@ class TaskNew extends Component{
           component={this.renderField}
         />
 
-        <button type="submit">Submit</button>
-        <Link to="/">Cancel</Link>
+        <button className="pure-button right-buffer" type="submit">Submit</button>
+        <Link className= "pure-button cancel-new" to="/">Cancel</Link>
       </form>
     );
   }
