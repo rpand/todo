@@ -11,6 +11,9 @@
     margin-top: 3em;
     margin-left: 5em;
   }
+  .PlusBtn {
+    right:16.5em;
+  }
 }
 
 /* This class is for centering an element */
@@ -28,9 +31,16 @@
     margin-right: auto;
 }
 
+/* This is for the title "Task List" */
+.title {
+  padding-top: 1em;
+}
+
 /* This is for the plus buttom for inserting todo*/
 .PlusBtn {
   padding-top: 1.5em;
+  position: absolute;
+  top:1em;
 }
 
 .ToDoList_container {

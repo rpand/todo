@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setSort, updateLow, updateMed, updateHigh } from '../actions';
+import { setSort, updateFilters } from '../actions';
 
 class BarContainer extends Component {
   constructor(props) {
@@ -67,6 +67,7 @@ class BarContainer extends Component {
             <div className="pure-u-1-3 centered">
             <span>
               <div className="pure-u-1-3 centered">
+<<<<<<< HEAD
                 <button onClick={() => {this.props.updateLow()}}
                   className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
               </div>
@@ -77,6 +78,15 @@ class BarContainer extends Component {
               <div className="pure-u-1-3 centered">
                 <button onClick={() => {this.props.updateHigh()}}
                   className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
+=======
+                <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}} className="pure-button filter" id="low_filter" >Low</button>
+              </div>
+              <div className="pure-u-1-3 centered">
+                <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}} className="pure-button filter" id="med_filter">Medium</button>
+              </div>
+              <div className="pure-u-1-3 centered">
+                <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}} className="pure-button filter" id="high_filter">High</button>
+>>>>>>> f64bc073cc13e16f2ed5e5544d5ca97017e10059
               </div>
             </span>
           </div>
@@ -110,13 +120,17 @@ class BarContainer extends Component {
     function mapStateToProps(state) {
       //connection between redux and component
       return {
+<<<<<<< HEAD
         sortFunction: state.sortFunction,
+=======
+        sortFunction:state.sortFunction,
+>>>>>>> f64bc073cc13e16f2ed5e5544d5ca97017e10059
         filters: state.filters
       };
     }
 
     function mapDispatchToProps(dispatch){
-      return bindActionCreators({ setSort, updateLow, updateMed, updateHigh }, dispatch);
+      return bindActionCreators({ setSort, updateFilters }, dispatch);
     }
 
  export default connect(mapStateToProps, mapDispatchToProps)(BarContainer);
