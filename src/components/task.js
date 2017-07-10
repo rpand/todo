@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { markAsComplete } from '../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 //A single Task within the Task List
 class Task extends Component {
+  constructor(props) {
+  super(props);
+
+  this.state = { taskId: this.props.task.id };
+
+  this.markComplete = this.markComplete.bind(this);
+}
+
+markComplete(){
+  this.props.markAsComplete(this.props.task.id);
+}
+
   printPriority(priority) {
     if(priority == 0) {
       return "Low";
@@ -29,8 +44,8 @@ class Task extends Component {
             className="todo checkbox"
             type="checkbox"
             id={this.props.task.id}
-            onChange={() => {doSomething()}}
-            checked={this.props.task.done}
+            defaultChecked={this.props.task.done}
+            onChange={this.markComplete}
           />
         </div>
         <div className="pure-u-2-3">
@@ -52,4 +67,14 @@ class Task extends Component {
   }
 }
 
-export default Task;
+function mapStateToProps(state) {
+  return {
+    taskId: state.taskId
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ markAsComplete }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task);
