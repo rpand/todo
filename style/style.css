@@ -1,7 +1,7 @@
 /*  Desktop-specific Styling  */
 @media screen and (min-width: 768px) {
   .container {
-    padding: 0px 2em 0px 2em;
+    padding: 0 2em 0 2em;
   }
   #box {
     width: 80%;
@@ -12,7 +12,7 @@
     margin-left: 5em;
   }
   .PlusBtn {
-    right:16.5em;
+    right: 16.5em;
   }
 }
 
@@ -38,9 +38,8 @@
 
 /* This is for the plus buttom for inserting todo*/
 .PlusBtn {
-  padding-top: 1.5em;
   position: absolute;
-  top:1em;
+  top: 1em;
 }
 
 .ToDoList_container {
@@ -82,7 +81,7 @@ label {
 
 #priority{
   padding: 1em 2em 1em 0em;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 .box {
@@ -140,6 +139,7 @@ label {
 
 .dropdown {
     display: inline-block;
+    cursor: pointer;
 }
 
 .dropdown ul {
@@ -172,6 +172,7 @@ label {
 
 .taskEdit {
   color: white;
+  background-color: #6090FF;
   float: right;
   text-decoration: none;
 }
@@ -180,12 +181,11 @@ label {
   text-decoration: none;
 }
 
+/* ==================Add New button functionality============================= */
 .right-buffer, .cancel-edit:hover {
   margin-right: 1em;
   text-decoration: none;
 }
-
-/* ==================Add New button functionality============================= */
 
  .cancel-new:hover {
   text-decoration: none;
@@ -193,11 +193,6 @@ label {
 
 .bar_container {
   margin-bottom: 0.5em;
-}
-
-.clicked-btn {
-  color: white;
-  background: #8085FF;
 }
 
 /* ==================== TOGGLE FILTER ==================== */

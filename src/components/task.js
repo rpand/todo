@@ -37,9 +37,9 @@ toggleCheckbox(){
 
     return (
       <div className="centered-box" id="box">
-        <Link className="pure-button taskEdit" to="/edit">Edit</Link>
+        <Link className="pure-button taskEdit" to="/edit">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
         <div className="pure-g">
-          <div className="pure-u-1-6 box centered">
+          <div className="pure-u-1-3 pure-u-md-1-6 box centered">
           <input
             className="todo checkbox"
             type="checkbox"
@@ -48,16 +48,16 @@ toggleCheckbox(){
             onChange={this.toggleCheckbox}
           />
         </div>
-        <div className="pure-u-2-3">
-            <div id = "title">
+        <div className="pure-u-1-3 pure-u-md-2-3">
+            <div id="title">
               {this.props.task.title}
             </div>
-            <div id = "dateDue">
+            <div id="dateDue">
               {dateDue}
              </div>
         </div>
-        <div className="pure-u-1-6">
-            <div id = "priority">
+        <div className="pure-u-1-3 pure-u-md-1-6">
+            <div id="priority">
               {this.printPriority(this.props.task.priority)}
             </div>
         </div>
