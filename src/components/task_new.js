@@ -4,13 +4,10 @@ import { Link } from 'react-router-dom';
 
 class TaskNew extends Component{
 
-  onSubmit(values){
-    console.log(values);
-  }
-
-  onInputChange(event){
-    console.log(this)
-  }
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+}
 
   renderField(field){
     return(
@@ -27,30 +24,31 @@ class TaskNew extends Component{
   render(){
     const { handleSubmit } = this.props;
     return(
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form onSubmit={this.handleSubmit}>
       <div>
         <h3>Task title</h3>
         <Link to="/">Task List</Link>
       </div>
-        <Field
+        <input
           label="Title"
           name="title"
           type="text"
-          component={this.renderField}
-          defaultValue='f'
-          onChange={this.onInputChange.bind(this)}
+          value={this.state.title}
+          onChange={this.onInputChange}
         />
-        <Field
+        <input
           label="Priority"
           name="priority"
           type="text"
-          component={this.renderField}
+          value={this.state.priority}
+          onChange={this.onInputChange}
         />
-        <Field
+        <input
           label="Date Due"
           name="datedue"
           type="text"
-          component={this.renderField}
+          value={this.state.datedue}
+          onChange={this.onInputChange}
         />
 
         <button className="pure-button right-buffer" type="submit">Submit</button>
