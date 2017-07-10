@@ -1,0 +1,170 @@
+/*  Desktop-specific Styling  */
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0px 2em 0px 2em;
+  }
+  #box {
+    width: 80%;
+    }
+  .popup-container {
+    width: 75%;
+    margin-top: 3em;
+    margin-left: 5em;
+  }
+}
+
+/* This class is for centering an element */
+.centered {
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* This class is for centering a box */
+.centered-box {
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* This is for the plus buttom for inserting todo*/
+.PlusBtn {
+  padding-top: 1.5em;
+}
+
+.ToDoList_container {
+  border: 1px solid black;
+  background-color:#D3D3D3;
+}
+
+.ToDoList_container {
+  margin-top: 1em;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* =============== BOX STYLING ===============  */
+#box {
+  border: 3px solid #204560;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: #306070;
+  color: white;
+}
+
+.checkbox {
+    width: 2.5em;
+    height: 2.5em;
+    border: 2px solid #304560;
+}
+
+#title {
+   padding: 1.5em 0px 0px 0px;
+  font-size: 1.5em;
+}
+
+#dateDue {
+  padding: 0px 0px 2em 0px;
+  font-size: 1em;
+}
+
+#priority{
+  padding: 1em 2em 1em 0em;
+  font-size: 2.5em;
+}
+
+.box {
+  padding: 3em 0px 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =============== END BOX STYLING ===============  */
+
+.popup-container {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: white;
+  border: 1px solid blue;
+}
+.input-form {
+  margin: auto;
+  padding: 1em;
+}
+
+.close-button {
+  float: right;
+  background-color: transparent;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-delete {
+  background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-edit {
+   background: rgb(240,210,120)
+}
+
+/* ======= SORT BUTTON DROPDOWN FUNCTIONALITY ======= */
+
+.sort-button {
+  cursor: pointer;
+}
+
+.sort-button:hover, .sort-button:focus {
+  background-color: #dbebf0;
+}
+
+/* ================================================= */
+
+.test {
+  border: 1px solid red;
+}
+
+.taskEdit {
+  color: white;
+  float: right;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.dropdown__content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid #207085;
+
+}
+.dropdown__content li {
+    border: 1px solid #207085;
+    padding: 1px 1.5em 1px 1.5em;
+}
+.dropdown__content li:hover {
+    background-color: #207085;
+    color: #FFFFFF;
+}
+
+.dropdown--active .dropdown__content {
+    display: block;
+}
