@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setSort, updateFilters } from '../actions';
+import { updateFilters } from '../actions';
 
 class BarContainer extends Component {
   constructor(props) {
@@ -12,46 +12,8 @@ class BarContainer extends Component {
     return a==b;
     })
   }
-  this.sortTasks = this.sortTasks.bind(this);
-  }
+}
 
-   sortTasks(sortBy){
-    	var sortFunction;
-    	switch(sortBy){
-    		case "alphaAsc":
-    			sortFunction = function(a,b){
-    				return a.title > b.title;
-    			}
-    			break;
-    		case "alphaDesc":
-    			sortFunction = function(a,b){
-    				return a.title < b.title;
-    			}
-    			break;
-    		case "priorityAsc":
-    			sortFunction = function(a,b){
-    				return a.priority > b.priority;
-    			}
-    			break;
-    		case "priorityDesc":
-    			sortFunction = function(a,b){
-    				return a.priority < b.priority;
-    			}
-    			break;
-    		case "dueDateAsc":
-    			sortFunction = function(a,b){
-    				return a.datedue > b.datedue;
-    			}
-    			break;
-    		case "dueDateDesc":
-    			sortFunction = function(a,b){
-    				return a.datedue < b.datedue;
-    			}
-    			break;
-    	}
-      this.props.setSort(sortFunction);
-    //  return sortFunction();
-    }
   render() {
     return(
       <div className="bar_container pure-g">
@@ -86,12 +48,12 @@ class BarContainer extends Component {
             </DropdownTrigger>
             <DropdownContent>
               <ul>
-                <li onClick={() => {this.sortTasks("alphaDesc")}}>Alphabetic Descending</li>
-                <li onClick={() => {this.sortTasks("alphaAsc")}}>Alphabetic Ascending</li>
-                <li onClick={() => {this.sortTasks("priorityDesc")}}>Priority High to Low</li>
-                <li onClick={() => {this.sortTasks("priorityAsc")}}>Priority Low to High</li>
-                <li onClick={() => {this.sortTasks("dueDateDesc")}}>Date High to Low</li>
-                <li onClick={() => {this.sortTasks("dueDateAsc")}}>Date Low to High</li>
+                <li onClick={() => {this.props.updateFilters({sortBy: "alphaDesc"})}}>Alphabetic Descending</li>
+                <li onClick={() => {this.props.updateFilters({sortBy: "alphaAsc"})}}>Alphabetic Ascending</li>
+                <li onClick={() => {this.props.updateFilters({sortBy: "priorityDesc"})}}>Priority High to Low</li>
+                <li onClick={() => {this.props.updateFilters({sortBy: "priorityAsc"})}}>Priority Low to High</li>
+                <li onClick={() => {this.props.updateFilters({sortBy: "dueDateDesc"})}}>Date High to Low</li>
+                <li onClick={() => {this.props.updateFilters({sortBy: "dueDateAsc"})}}>Date Low to High</li>
               </ul>
             </DropdownContent>
             </Dropdown>
@@ -107,13 +69,12 @@ class BarContainer extends Component {
     function mapStateToProps(state) {
       //connection between redux and component
       return {
-        sortFunction:state.sortFunction,
         filters: state.filters
       };
     }
 
     function mapDispatchToProps(dispatch){
-      return bindActionCreators({ setSort, updateFilters }, dispatch);
+      return bindActionCreators({ updateFilters }, dispatch);
     }
 
  export default connect(mapStateToProps, mapDispatchToProps)(BarContainer);

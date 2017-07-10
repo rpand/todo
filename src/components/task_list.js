@@ -12,39 +12,75 @@ class TaskList extends Component{
   super(props);
 
   this.filter = this.filter.bind(this);
-  //this.updateFilter = this.updateFilter.bind(this);
+  this.sortTasks = this.sortTasks.bind(this);
 }
 
-  renderTask(task){
-      return (
-        <Task key={task.id} task={task} />
-      );
-  }
-
-  render(){
-    const todos = this.filter();
-    return(
-      <div>
-        <div>
-          <Link className="pure-button PlusBtn pull-right /new" to="/new">
-            <i className="fa fa-plus" aria-hidden="true"></i>
-            </Link>
-            <h3 className="title centered">Task List</h3>
-        </div>
-        <BarContainer />
-        {todos.map(this.renderTask)}
-      </div>
+renderTask(task){
+    return (
+      <Task key={task.id} task={task} />
     );
+}
+
+render(){
+  const todos = this.filter();
+  return(
+    <div>
+      <div>
+        <Link className="pure-button PlusBtn pull-right /new" to="/new">
+          <i className="fa fa-plus" aria-hidden="true"></i>
+          </Link>
+          <h3 className="title centered">Task List</h3>
+      </div>
+      <BarContainer />
+      {todos.map(this.renderTask)}
+    </div>
+  );
+}
+
+sortTasks(sortBy){
+  var sortedTodos = this.props.tasks.slice();
+  switch(sortBy){
+    case "alphaAsc":
+        sortedTodos.sort(function(a, b) {
+          return a.title > b.title;
+        });
+        break;
+    case "alphaDesc":
+      sortedTodos.sort(function(a, b) {
+        return a.title < b.title;
+      });
+      break;
+    case "priorityAsc":
+      sortedTodos.sort(function(a, b) {
+        return a.priority > b.priority;
+      });
+      break;
+    case "priorityDesc":
+      sortedTodos.sort(function(a, b) {
+        return a.priority < b.priority;
+      });
+      break;
+    case "dueDateAsc":
+      sortedTodos.sort(function(a, b) {
+        return a.datedue > b.datedue;
+      });
+      break;
+    case "dueDateDesc":
+      sortedTodos.sort(function(a, b) {
+        return a.datedue < b.datedue;
+      });
+      break;
   }
+  return sortedTodos;
+}
 
   filter(){
-    console.log(this.props.filters);
     var low = this.props.filters.lowPriority;
     var med = this.props.filters.medPriority;;
     var high = this.props.filters.highPriority;;
     var today = false;
 
-    var filterdTodos = this.props.tasks.slice();
+    var filterdTodos = this.sortTasks(this.props.filters.sortBy);
 
     if(!low){
       filterdTodos = filterdTodos.filter(t => t.priority != 0)
@@ -71,16 +107,16 @@ class TaskList extends Component{
   }
 }
 
-    function mapStateToProps(state) {
-      //connection between redux and component
-      return {
-        tasks: state.tasks,
-        filters: state.filters
-      };
-    }
+function mapStateToProps(state) {
+  //connection between redux and component
+  return {
+    tasks: state.tasks,
+    filters: state.filters
+  };
+}
 
-    function mapDispatchToProps(dispatch){
-      return bindActionCreators({ fetchTasks }, dispatch);
-    }
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ fetchTasks }, dispatch);
+}
 
-    export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

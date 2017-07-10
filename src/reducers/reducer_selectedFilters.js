@@ -1,6 +1,6 @@
 import { UPDATE_FILTERS } from '../actions';
 
-const selectedFilters = {lowPriority: true, medPriority: true, highPriority: true};
+const selectedFilters = {lowPriority: true, medPriority: true, highPriority: true, sortBy: "alphaAsc"};
 
 export default function(state={}, action){
   switch(action.type){
