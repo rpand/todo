@@ -128,17 +128,9 @@ label {
   background-color: #dbebf0;
 }
 
-/* ================================================= */
-
 .test {
   border: 1px solid red;
 }
-
-.taskEdit {
-  color: white;
-  float: right;
-}
-
 .dropdown {
     display: inline-block;
 }
@@ -168,3 +160,35 @@ label {
 .dropdown--active .dropdown__content {
     display: block;
 }
+/* ==================Edit button functionality============================= */
+
+.taskEdit {
+  color: white;
+  float: right;
+}
+
+.button-edit:hover {
+   color: blue;
+   text-decoration: none;
+}
+
+.right-buffer,.cancel-edit:hover {
+  margin-right: 1em;
+  text-decoration: none;
+  
+/* ==================Add New button functionality============================= */  
+  
+ .cancel-new:hover{
+  text-decoration: none;
+}
+
+.bar_container {
+  margin-bottom: 0.5em;
+}
+
+.clicked-btn {
+  color: white;
+  background: #8085FF;
+}
+ 
+
