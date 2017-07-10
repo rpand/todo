@@ -13,7 +13,6 @@ export default function(state={}, action){
       newToDoItems.map(function(todo, index) {
         if(index === action.payload){
           todo.done = !todo.done;
-          console.log(todo);
         }
         return todo;
       });

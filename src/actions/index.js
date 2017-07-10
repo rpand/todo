@@ -1,6 +1,6 @@
 export const FETCH_TASKS = "fetch_tasks";
 export const SET_SORT ="set_sort";
-export const MARK_AS_COMPLETE = "mark_as_compelte";
+export const MARK_AS_COMPLETE = "mark_as_complete";
 
 export function fetchTasks(){
   //fetch tasks from json object or HTML5 session storage
