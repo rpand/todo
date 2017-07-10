@@ -37,7 +37,7 @@ markComplete(){
 
     return (
       <div className="centered-box" id="box">
-        <Link className="taskEdit" to="/edit">Edit</Link>
+        <Link className="pure-button taskEdit" to="/edit">Edit</Link>
         <div className="pure-g">
           <div className="pure-u-1-6 box centered">
           <input

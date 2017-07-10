@@ -165,20 +165,21 @@ label {
 .taskEdit {
   color: white;
   float: right;
+  text-decoration: none;
 }
 
-.button-edit:hover {
-   color: blue;
-   text-decoration: none;
+.taskEdit:hover {
+  text-decoration: none;
 }
 
 .right-buffer,.cancel-edit:hover {
   margin-right: 1em;
   text-decoration: none;
-  
-/* ==================Add New button functionality============================= */  
-  
- .cancel-new:hover{
+}
+
+/* ==================Add New button functionality============================= */
+
+ .cancel-new:hover {
   text-decoration: none;
 }
 
@@ -190,5 +191,3 @@ label {
   color: white;
   background: #8085FF;
 }
- 
-
