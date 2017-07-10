@@ -36,8 +36,8 @@ class TaskEdit extends Component{
           component={this.renderField}
         />
 
-        <button type="submit">Submit</button>
-        <Link to="/">Cancel</Link>
+       <button className="pure-button right-buffer" type="submit">Submit</button>
+        <Link className="pure-button cancel-edit" to="/">Cancel</Link>
       </form>
     );
   }
