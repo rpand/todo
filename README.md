@@ -1,9 +1,11 @@
 # todo
 
-A to-do list application built using React/Redux. 
+A to-do list application built using React/Redux.
 
 
-NEEDS: 
+```
+NEEDS:
 npm install --save react-router-dom
 npm install --save redux-form
 npm install --save react-simple-dropdown
+```
