@@ -14,7 +14,6 @@ export default function(state={}, action){
         if(index === action.payload){
           todo.done = !todo.done;
         }
-        return todo;
       });
       return newToDoItems;
     default:
