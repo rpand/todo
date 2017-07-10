@@ -67,26 +67,16 @@ class BarContainer extends Component {
             <div className="pure-u-1-3 centered">
             <span>
               <div className="pure-u-1-3 centered">
-<<<<<<< HEAD
-                <button onClick={() => {this.props.updateLow()}}
+                <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
                   className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
               </div>
               <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateMed()}}
+                <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
                   className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
               </div>
               <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateHigh()}}
+                <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
                   className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
-=======
-                <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}} className="pure-button filter" id="low_filter" >Low</button>
-              </div>
-              <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}} className="pure-button filter" id="med_filter">Medium</button>
-              </div>
-              <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}} className="pure-button filter" id="high_filter">High</button>
->>>>>>> f64bc073cc13e16f2ed5e5544d5ca97017e10059
               </div>
             </span>
           </div>
@@ -120,11 +110,7 @@ class BarContainer extends Component {
     function mapStateToProps(state) {
       //connection between redux and component
       return {
-<<<<<<< HEAD
         sortFunction: state.sortFunction,
-=======
-        sortFunction:state.sortFunction,
->>>>>>> f64bc073cc13e16f2ed5e5544d5ca97017e10059
         filters: state.filters
       };
     }
