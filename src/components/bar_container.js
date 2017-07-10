@@ -67,13 +67,16 @@ class BarContainer extends Component {
             <div className="pure-u-1-3 centered">
             <span>
               <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateLow()}} className="pure-button filter" id="low_filter" >Low</button>
+                <button onClick={() => {this.props.updateLow()}}
+                  className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
               </div>
               <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateMed()}} className="pure-button filter" id="med_filter">Medium</button>
+                <button onClick={() => {this.props.updateMed()}}
+                  className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
               </div>
               <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateHigh()}} className="pure-button filter" id="high_filter">High</button>
+                <button onClick={() => {this.props.updateHigh()}}
+                  className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
               </div>
             </span>
           </div>
@@ -107,7 +110,8 @@ class BarContainer extends Component {
     function mapStateToProps(state) {
       //connection between redux and component
       return {
-        sortFunction:state.sortFunction
+        sortFunction: state.sortFunction,
+        filters: state.filters
       };
     }
 

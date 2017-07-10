@@ -128,9 +128,6 @@ label {
   background-color: #dbebf0;
 }
 
-.test {
-  border: 1px solid red;
-}
 .dropdown {
     display: inline-block;
 }
@@ -160,6 +157,7 @@ label {
 .dropdown--active .dropdown__content {
     display: block;
 }
+
 /* ==================Edit button functionality============================= */
 
 .taskEdit {
@@ -172,7 +170,7 @@ label {
   text-decoration: none;
 }
 
-.right-buffer,.cancel-edit:hover {
+.right-buffer, .cancel-edit:hover {
   margin-right: 1em;
   text-decoration: none;
 }
@@ -190,4 +188,14 @@ label {
 .clicked-btn {
   color: white;
   background: #8085FF;
+}
+
+/* ==================== TOGGLE FILTER ==================== */
+.filter-toggle {
+  background-color: #a6ccd9;
+  color: whitesmoke;
+}
+
+.test {
+  border: 1px solid red;
 }
