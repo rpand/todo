@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { markAsComplete } from '../actions';
+import { toggleComplete } from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -11,11 +11,11 @@ class Task extends Component {
 
   this.state = { taskId: this.props.task.id };
 
-  this.markComplete = this.markComplete.bind(this);
+  this.toggleCheckbox = this.toggleCheckbox.bind(this);
 }
 
-markComplete(){
-  this.props.markAsComplete(this.props.task.id);
+toggleCheckbox(){
+  this.props.toggleComplete(this.props.task.id);
 }
 
   printPriority(priority) {
@@ -45,7 +45,7 @@ markComplete(){
             type="checkbox"
             id={this.props.task.id}
             defaultChecked={this.props.task.done}
-            onChange={this.markComplete}
+            onChange={this.toggleCheckbox}
           />
         </div>
         <div className="pure-u-2-3">
@@ -74,7 +74,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ markAsComplete }, dispatch);
+  return bindActionCreators({ toggleComplete }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);
