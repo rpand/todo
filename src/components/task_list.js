@@ -25,9 +25,11 @@ class TaskList extends Component{
     const todos = this.filter();
     return(
       <div>
-        <h3>Task List</h3>
+        <h3 className="centered">Task List</h3>
         <BarContainer />
-        <Link className="pull-right" to="/new">Add</Link>
+        <Link className="pure-button PlusBtn pull-right /new" to="/new">
+          <i className="fa fa-plus" aria-hidden="true"></i>
+        </Link>
         {todos.map(this.renderTask)}
       </div>
     );
@@ -41,7 +43,7 @@ class TaskList extends Component{
     var today = false;
 
     var filterdTodos = this.props.tasks.slice();
-    
+
     if(!low){
       filterdTodos = filterdTodos.filter(t => t.priority != 0)
     }
