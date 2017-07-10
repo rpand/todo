@@ -25,11 +25,13 @@ class TaskList extends Component{
     const todos = this.filter();
     return(
       <div>
-        <h3 className="centered">Task List</h3>
+        <div>
+          <Link className="pure-button PlusBtn pull-right /new" to="/new">
+            <i className="fa fa-plus" aria-hidden="true"></i>
+            </Link>
+            <h3 className="title centered">Task List</h3>
+        </div>
         <BarContainer />
-        <Link className="pure-button PlusBtn pull-right /new" to="/new">
-          <i className="fa fa-plus" aria-hidden="true"></i>
-        </Link>
         {todos.map(this.renderTask)}
       </div>
     );
