@@ -17,6 +17,33 @@ class TaskNew extends Component{
     this.onInputChange = this.onInputChange.bind(this);
 }
 
+  renderField(field){
+    return(
+      <div >
+        <label>{field.label}</label>
+        <input
+          type={field.type}
+          {...field.input}
+        />
+      </div>
+    );
+  }
+
+  onInputChange(event){
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    var nextID = this.props.nextID;
+    console.log(nextID);
+    console.log(this.state.title);
+    this.props.addTask({"id":nextID,"datecreated":1498061397000,"datedue":this.state.datedue,"title":this.state.title,"priority":2,"done":false});
+    this.setState({ title: '' , priority: '', datedue: ''});
+    this.props.incrementID();
+    console.log(this.props.nextID);
+  }
+
   render(){
     const { handleSubmit } = this.props;
     return(
