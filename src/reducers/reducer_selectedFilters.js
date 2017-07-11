@@ -1,6 +1,6 @@
 import { UPDATE_FILTERS, TOGGLE_COMPLETE, DELETE_TASK } from '../actions';
 
-const selectedFilters = {lowPriority: true, medPriority: true, highPriority: true, sortBy: "alphaAsc"};
+const selectedFilters = {lowPriority: true, medPriority: true, highPriority: true, todayOnly: false, sortBy: "alphaAsc"};
 
 export default function(state={}, action){
   switch(action.type){
