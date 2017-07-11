@@ -212,6 +212,25 @@ label {
   text-decoration: none;
 }
 
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.left-buffer, .home-edit:hover {
+  margin-top: 1em;
+   margin-bottom: 6.250em;
+   margin-right: 9.375em;
+   margin-left: 3em;
+  padding-right: 1em;
+  text-decoration: none;
+}
+
+.home-new:hover {
+ text-decoration: none;
+}
+
 .bar_container {
   margin-bottom: 0.5em;
 }

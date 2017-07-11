@@ -32,7 +32,6 @@ export function updateFilters(changedObject){
 
 //mark the task item as complete
 export function toggleComplete(id){
-
   return {
     type: TOGGLE_COMPLETE,
     payload: id
@@ -47,7 +46,6 @@ export function addTask(task){
 }
 
 export function editTask(task){
-  console.log("CREATE ACTION");
   return {
     type: EDIT_TASK,
     payload: task

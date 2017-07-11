@@ -22,13 +22,18 @@ class TaskNew extends Component{
 
   handleSubmit(event){
     event.preventDefault();
-    var nextID = this.props.nextID;
-    console.log(nextID);
-    console.log(this.state.title);
-    this.props.addTask({"id":nextID,"datecreated":1498061397000,"datedue":this.state.datedue,"title":this.state.title,"priority":2,"done":false});
+    //var nextID = this.props.nextID;
+    //Get the next ID in a terrible way because mike gives up
+    var allTodos = this.props.todos;
+    var nextID = allTodos.reduce( (largest, todo) => {return largest > todo.id ? largest:todo.id}, 0 );
+    nextID++;
+    var today = new Date();
+    var time= today.getTime();
+    var priority = parseInt(this.state.priority);
+    this.props.addTask({"id":nextID,"datecreated":time,"datedue":this.state.datedue,"title":this.state.title,"priority":priority,"done":false});
+    console.log(this.props.todos);
     this.setState({ title: '' , priority: '', datedue: ''});
-    this.props.incrementID();
-    console.log(this.props.nextID);
+    //this.props.incrementID();
   }
 
   render(){
@@ -75,6 +80,8 @@ class TaskNew extends Component{
           <div className="pure-controls">
             <button className="pure-button pure-button-primary right-buffer" type="submit">Submit</button>
             <Link className= "pure-button cancel-new" to="/">Cancel</Link>
+            <div class="divider"/>
+            <Link className= "pure-button home-new left-buffer" to="/">Home</Link>
           </div>
         </fieldset>
       </form>
@@ -85,6 +92,7 @@ class TaskNew extends Component{
 function mapStateToProps(state) {
   //connection between redux and component
   return {
+    todos: state.tasks,
     nextID: state.nextID
   };
 }
