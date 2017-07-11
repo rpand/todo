@@ -77,10 +77,9 @@ class TaskEdit extends Component{
   }
 
   handleSubmit(event){
-    console.log("submit");
-    console.log(this.state.task);
-
-    this.props.editTask({...this.state.task, priority: parseInt(this.state.priority), datedue: Date.parse(this.state.datedue)});
+    var time = new Date(this.state.datedue);
+    time.setTime(time.getTime() + 21600000 );
+    this.props.editTask({...this.state.task, priority: parseInt(this.state.priority), datedue: time.getTime()});
   }
 }
 

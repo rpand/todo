@@ -31,7 +31,6 @@ class TaskNew extends Component{
     var time= today.getTime();
     var priority = parseInt(this.state.priority);
     this.props.addTask({"id":nextID,"datecreated":time,"datedue":this.state.datedue,"title":this.state.title,"priority":priority,"done":false});
-    console.log(this.props.todos);
     this.setState({ title: '' , priority: '', datedue: ''});
     //this.props.incrementID();
   }
