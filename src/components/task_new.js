@@ -35,13 +35,18 @@ class TaskNew extends Component{
 
   handleSubmit(event){
     event.preventDefault();
-    var nextID = this.props.nextID;
-    console.log(nextID);
-    console.log(this.state.title);
-    this.props.addTask({"id":nextID,"datecreated":1498061397000,"datedue":this.state.datedue,"title":this.state.title,"priority":2,"done":false});
+    //var nextID = this.props.nextID;
+    //Get the next ID in a terrible way because mike gives up
+    var allTodos = this.props.todos;
+    var nextID = allTodos.reduce( (largest, todo) => {return largest > todo.id ? largest:todo.id}, 0 );
+    nextID++;
+    var today = new Date();
+    var time= today.getTime();
+    console.log(time);
+    this.props.addTask({"id":nextID,"datecreated":time,"datedue":this.state.datedue,"title":this.state.title,"priority":2,"done":false});
+    console.log(this.props.todos);
     this.setState({ title: '' , priority: '', datedue: ''});
-    this.props.incrementID();
-    console.log(this.props.nextID);
+    //this.props.incrementID();
   }
 
   render(){
@@ -84,6 +89,7 @@ class TaskNew extends Component{
 function mapStateToProps(state) {
   //connection between redux and component
   return {
+    todos: state.tasks,
     nextID: state.nextID
   };
 }

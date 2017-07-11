@@ -60,12 +60,14 @@ export function deleteTask(id){
 }
 
 export function incrementID(){
+  console.log('increment this');
   return {
     type: INCREMENT_ID
   }
 }
 
 export function getNextID(){
+  console.log("get next id");
   return {
     type: FETCH_ID
   }

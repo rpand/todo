@@ -1,14 +1,16 @@
 import { INCREMENT_ID, FETCH_ID } from '../actions';
 
-const nextAvailID = 8;
-
-export default function(state={}, action){
+export default function(state, action){
   switch(action.type){
     case INCREMENT_ID:
-        return state++;
+        return {nextID:state.nextID++}; 
     case FETCH_ID:
-        return state;
+        return state
     default:
-    	return nextAvailID;
+    	if(state==undefined){
+    		return {nextID:8};
+    	}
+    	console.log(state);
+    	return state;
   }
 }
