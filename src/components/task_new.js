@@ -75,6 +75,8 @@ class TaskNew extends Component{
           <div className="pure-controls">
             <button className="pure-button pure-button-primary right-buffer" type="submit">Submit</button>
             <Link className= "pure-button cancel-new" to="/">Cancel</Link>
+            <div class="divider"/>
+            <Link className= "pure-button home-new left-buffer" to="/">Home</Link>
           </div>
         </fieldset>
       </form>
