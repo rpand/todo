@@ -5,13 +5,10 @@ const selectedFilters = {lowPriority: true, medPriority: true, highPriority: tru
 export default function(state={}, action){
   switch(action.type){
     case UPDATE_FILTERS:
-        console.log(state);
-        console.log(action.payload);
         return {...state, ...action.payload};
     case TOGGLE_COMPLETE:
         return {...state};
     default:
-        console.log("default filters");
     	return selectedFilters;
   }
 }

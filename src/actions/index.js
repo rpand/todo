@@ -1,5 +1,8 @@
 export const FETCH_TASKS = "fetch_tasks";
 export const SET_SORT ="set_sort";
+export const ADD_TASK ="add_task";
+export const EDIT_TASK ="edit_task";
+export const DELETE_TASK ="delete_task";
 export const UPDATE_FILTERS = "update_filters";
 export const TOGGLE_COMPLETE = "toggle_complete";
 
@@ -29,6 +32,27 @@ export function toggleComplete(id){
 
   return {
     type: TOGGLE_COMPLETE,
+    payload: id
+  };
+}
+
+export function addTask(task){
+  return {
+    type: ADD_TASK,
+    payload: task
+  };
+}
+
+export function editTask(task){
+  return {
+    type: EDIT_TASK,
+    payload: task
+  };
+}
+
+export function deleteTask(id){
+  return {
+    type: DELETE_TASK,
     payload: id
   };
 }
