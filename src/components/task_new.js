@@ -9,18 +9,6 @@ class TaskNew extends Component{
     this.state = {value: ''};
 }
 
-  renderField(field){
-    return(
-      <div >
-        <label>{field.label}</label>
-        <input
-          type={field.type}
-          {...field.input}
-        />
-      </div>
-    );
-  }
-
   render(){
     const { handleSubmit } = this.props;
     return(
@@ -36,17 +24,22 @@ class TaskNew extends Component{
           value={this.state.title}
           onChange={this.onInputChange}
         />
-        <input
-          label="Priority"
+        <select
           name="priority"
-          type="text"
           value={this.state.priority}
           onChange={this.onInputChange}
-        />
+        >
+        <label>Priority</label>
+
+          <option value='0'>Low</option>
+          <option value='1'>Medium</option>
+          <option value='2'>High</option>
+
+          </select>
         <input
           label="Date Due"
           name="datedue"
-          type="text"
+          type="date"
           value={this.state.datedue}
           onChange={this.onInputChange}
         />
