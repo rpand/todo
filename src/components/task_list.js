@@ -103,7 +103,19 @@ sortTasks(sortBy){
         }
       }
     }
-    return filterdTodos;
+    var todosThatAreDone = [];
+    console.log(filterdTodos);
+    for(var i=0; i<filterdTodos.length; i++){
+      if(filterdTodos[i].done == true){
+        var doneTodo = filterdTodos.splice(i,1);
+        todosThatAreDone.push(doneTodo[0]);
+        i--;
+      }
+    }
+    console.log(todosThatAreDone);
+    var returnArray = filterdTodos.concat(todosThatAreDone);
+    console.log(returnArray);
+    return returnArray;
   }
 }
 
