@@ -76,9 +76,9 @@ sortTasks(sortBy){
 
   filter(){
     var low = this.props.filters.lowPriority;
-    var med = this.props.filters.medPriority;;
-    var high = this.props.filters.highPriority;;
-    var today = false;
+    var med = this.props.filters.medPriority;
+    var high = this.props.filters.highPriority;
+    var today = this.props.filters.todayOnly;
 
     var filterdTodos = this.sortTasks(this.props.filters.sortBy);
 
@@ -95,11 +95,12 @@ sortTasks(sortBy){
       var todayDate = new Date();
       var todoDate = new Date();
       for(var i=0; i<filterdTodos.length; i++){
-        todoDate.setTime(filterdTodos[i].datedue)
+        todoDate.setTime(filterdTodos[i].datedue);
+        console.log(todoDate.getFullYear()+"-"+todoDate.getMonth()+"-"+todoDate.getDate());
         if(todayDate.getDate() != todoDate.getDate()
-          || todayDate.getMonth() != todoDate.getMonth()
-          || todayDate.getFullYear() != todoDate.getFullYear()){
+          ){
           filterdTodos.splice(i, 1);
+          i--;
         }
       }
     }
