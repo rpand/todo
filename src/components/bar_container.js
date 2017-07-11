@@ -22,7 +22,10 @@ class BarContainer extends Component {
             <div className="pure-u-1-3 centered">
             <span>
               Show:
-              <button id="timeFilterToggle" onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}className="pure-button filter">Today
+              <button id="timeFilterToggle"
+              onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
+                className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
+                { this.props.filters.todayOnly ? "Today" : "All"}
               </button>
             </span>
             </div>
