@@ -22,6 +22,7 @@ renderTask(task){
 }
 
 render(){
+  console.log("render");
   const todos = this.filter();
   return(
     <div>
@@ -79,6 +80,8 @@ sortTasks(sortBy){
     var med = this.props.filters.medPriority;;
     var high = this.props.filters.highPriority;;
     var today = false;
+    console.log(low);
+    console.log(med);
 
     var filterdTodos = this.sortTasks(this.props.filters.sortBy);
 

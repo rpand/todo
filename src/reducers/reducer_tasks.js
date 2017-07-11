@@ -12,6 +12,7 @@ export default function(state={}, action){
           todo.done = !todo.done;
         }
       });
+      console.log("new items");
       return newToDoItems;
     default:
     	return TODOITEMS;
