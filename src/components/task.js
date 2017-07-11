@@ -28,11 +28,11 @@ class Task extends Component {
   render() {
     var dateDue = new Date(this.props.task.datedue);
     dateDue = dateDue.toLocaleDateString();
-
+    var editUrl = "/edit"+this.props.task.id
     return (
       <div className="centered-box" id="box">
         <div className="taskDiv centered">
-          <Link className="pure-button taskEdit" to="/edit">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
+          <Link className="pure-button taskEdit" to={editUrl}>Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
           <br></br>
           <button onClick={() => {this.props.deleteTask(this.props.task.id)}} className="pure-button taskDelete">Delete <i className="fa fa-trash-o" aria-hidden="true"></i></button>
         </div>

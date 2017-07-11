@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchTask } from '../actions';
 
 class TaskEdit extends Component{
+
+  componentDidMount(){
+    const id = this.props.match.params.id;
+    fetchTask(id);
+  }
+
   handleSubmit(values){
     console.log(values);
   }
 
   render(){
+    const task = this.props.tasks[this.props.match.params.id];
     return(
       <form onSubmit={ this.handleSubmit(this)} className="pure-form pure-form-aligned">
         <fieldset>
           <legend>Edit Task</legend>
 
           <div className="pure-control-group">
-            <div>TASK TITLE</div>
+            <label>Task Name</label>
+            <span>{task.title}</span>
           </div>
 
           <div className="pure-control-group">
@@ -45,4 +56,10 @@ class TaskEdit extends Component{
   }
 }
 
-export default TaskEdit;
+function mapStateToProps(state){
+  return {
+    tasks: state.tasks
+  };
+}
+
+export default connect(mapStateToProps)(TaskEdit);
