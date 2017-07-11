@@ -8,6 +8,7 @@ export default function(state=TODOITEMS, action){
     case DELETE_TASK:
       return state.filter(t => t.id != action.payload)
     case ADD_TASK:
+      console.log("add task");
       return [action.payload].concat(state);
     case EDIT_TASK:
       return state.map(() => { return t.id == action.payload.id ? t : action.payload});

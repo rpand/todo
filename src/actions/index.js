@@ -74,6 +74,7 @@ export function fetchTask(id){
 }
 
 export function getNextID(){
+  console.log("get next id");
   return {
     type: FETCH_ID
   }
