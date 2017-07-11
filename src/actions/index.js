@@ -5,6 +5,7 @@ export const EDIT_TASK ="edit_task";
 export const DELETE_TASK ="delete_task";
 export const UPDATE_FILTERS = "update_filters";
 export const TOGGLE_COMPLETE = "toggle_complete";
+export const FETCH_TASK = "fetch_task";
 export const FETCH_ID = "fetch_id";
 export const INCREMENT_ID = "increment_id";
 
@@ -59,7 +60,13 @@ export function deleteTask(id){
   };
 }
 
-export function incrementID(){
+export function fetchTask(id){
+  return {
+    type: FETCH_TASK,
+    payload: id
+  }
+  
+  export function incrementID(){
   return {
     type: INCREMENT_ID
   }

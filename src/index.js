@@ -16,7 +16,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/new" component={TaskNew} />
-          <Route path="/edit" component={TaskEdit} />
+          <Route path="/edit:id" component={TaskEdit} />
           <Route path="/" component={TaskList} />
         </Switch>
       </div>
