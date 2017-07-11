@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { toggleComplete } from '../actions';
+import { toggleComplete, deleteTask } from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -10,12 +10,6 @@ class Task extends Component {
   super(props);
 
   this.state = { taskId: this.props.task.id };
-
-  this.toggleCheckbox = this.toggleCheckbox.bind(this);
-}
-
-toggleCheckbox(){
-  this.props.toggleComplete(this.props.task.id);
 }
 
   printPriority(priority) {
@@ -40,7 +34,7 @@ toggleCheckbox(){
         <div className="taskDiv centered">
           <Link className="pure-button taskEdit" to="/edit">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
           <br></br>
-          <button className="pure-button taskDelete">Delete <i className="fa fa-trash-o" aria-hidden="true"></i></button>
+          <button onClick={() => {this.props.deleteTask(this.props.task.id)}} className="pure-button taskDelete">Delete <i className="fa fa-trash-o" aria-hidden="true"></i></button>
         </div>
         <div className="pure-g">
           <div className="pure-u-1-3 pure-u-md-1-6 box centered">
@@ -49,7 +43,7 @@ toggleCheckbox(){
             type="checkbox"
             id={this.props.task.id}
             defaultChecked={this.props.task.done}
-            onChange={this.toggleCheckbox}
+            onChange={() => {  this.props.toggleComplete(this.props.task.id)}}
           />
         </div>
         <div className="pure-u-1-3 pure-u-md-2-3">
@@ -78,7 +72,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ toggleComplete }, dispatch);
+  return bindActionCreators({ toggleComplete, deleteTask }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);

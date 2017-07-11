@@ -6,7 +6,7 @@ export default function(state={}, action){
     case FETCH_TASKS:
     	return state;
     case DELETE_TASK:
-      return state.filter(t => t.id == action.payload)
+      return state.filter(t => t.id != action.payload)
     case ADD_TASK:
       return [action.payload].concat(state);
     case EDIT_TASK:
