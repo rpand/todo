@@ -8,10 +8,10 @@ export default function(state=TODOITEMS, action){
     case DELETE_TASK:
       return state.filter(t => t.id != action.payload)
     case ADD_TASK:
-      console.log("add task");
       return [action.payload].concat(state);
     case EDIT_TASK:
-      return state.map(() => { return t.id == action.payload.id ? t : action.payload});
+      var newState = state.map((task) => { return (task.id == action.payload.id ? action.payload : task) });
+      return newState;
     case TOGGLE_COMPLETE:
       var newToDoItems = state.slice();
       newToDoItems.map(function(todo, index) {

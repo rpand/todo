@@ -32,7 +32,6 @@ export function updateFilters(changedObject){
 
 //mark the task item as complete
 export function toggleComplete(id){
-
   return {
     type: TOGGLE_COMPLETE,
     payload: id
@@ -74,7 +73,6 @@ export function fetchTask(id){
 }
 
 export function getNextID(){
-  console.log("get next id");
   return {
     type: FETCH_ID
   }
