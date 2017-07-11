@@ -2,23 +2,31 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchTask } from '../actions';
+import { fetchTask, editTask } from '../actions';
 
 class TaskEdit extends Component{
+  constructor(props) {
+    super(props);
+
+    var task = this.props.tasks.find((item) => {return (item.id == this.props.match.params.id)});
+    var formattedDate = new Date(task.datedue).toISOString().slice(0,10); //yyyy-mm-dd
+    var priority = task.priority;
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = { priority: priority, datedue: formattedDate, task: task};
+  }
 
   componentDidMount(){
     const id = this.props.match.params.id;
     fetchTask(id);
   }
 
-  handleSubmit(values){
-    console.log(values);
-  }
-
   render(){
-    const task = this.props.tasks[this.props.match.params.id];
+    const task = this.state.task;
+
     return(
-      <form onSubmit={ this.handleSubmit(this)} className="pure-form pure-form-aligned">
+      <form className="pure-form pure-form-aligned">
         <fieldset>
           <legend>Edit Task</legend>
 
@@ -29,10 +37,10 @@ class TaskEdit extends Component{
 
           <div className="pure-control-group">
             <label htmlFor="priority">Priority</label>
-            <select name="priority">
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
+            <select name="priority" defaultValue={this.state.priority} onChange={ event => this.onPriorityChange(event.target.value) }>
+              <option value="2">High</option>
+              <option value="1">Medium</option>
+              <option value="0">Low</option>
             </select>
 
           </div>
@@ -42,17 +50,37 @@ class TaskEdit extends Component{
             <input
               name="priority"
               type="date"
+              defaultValue={this.state.datedue}
+              onChange={event => this.onDateChange(event.target.value) }
             />
           </div>
 
           <div className="pure-controls">
-            <button className="pure-button pure-button-primary right-buffer" type="submit">Submit</button>
+            <Link
+              to="/"
+              className="pure-button pure-button-primary right-buffer"
+              type="submit"
+              onClick={ this.handleSubmit }>Submit</Link>
              <Link className="pure-button cancel-edit" to="/">Cancel</Link>
           </div>
 
         </fieldset>
       </form>
     );
+  }
+  onPriorityChange(priority) {
+    this.setState({priority});
+  }
+
+  onDateChange(datedue) {
+    this.setState({datedue});
+  }
+
+  handleSubmit(event){
+    console.log("submit");
+    console.log(this.state.task);
+
+    this.props.editTask({...this.state.task, priority: parseInt(this.state.priority), datedue: Date.parse(this.state.datedue)});
   }
 }
 
@@ -62,4 +90,8 @@ function mapStateToProps(state){
   };
 }
 
-export default connect(mapStateToProps)(TaskEdit);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ editTask }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskEdit);

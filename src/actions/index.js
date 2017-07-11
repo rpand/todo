@@ -47,6 +47,7 @@ export function addTask(task){
 }
 
 export function editTask(task){
+  console.log("CREATE ACTION");
   return {
     type: EDIT_TASK,
     payload: task
