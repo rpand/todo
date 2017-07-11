@@ -37,7 +37,11 @@ toggleCheckbox(){
 
     return (
       <div className="centered-box" id="box">
-        <Link className="pure-button taskEdit" to="/edit">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
+        <div className="taskDiv centered">
+          <Link className="pure-button taskEdit" to="/edit">Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
+          <br></br>
+          <button className="pure-button taskDelete">Delete <i className="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
         <div className="pure-g">
           <div className="pure-u-1-3 pure-u-md-1-6 box centered">
           <input

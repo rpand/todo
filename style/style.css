@@ -168,18 +168,39 @@ label {
     display: block;
 }
 
+/* ==================Edit and Delete Button Div============================= */
+
+.taskDiv{
+  float: right;
+  text-decoration: none;
+
+
+}
+
 /* ==================Edit button functionality============================= */
 
 .taskEdit {
   color: white;
   background-color: #6090FF;
-  float: right;
-  text-decoration: none;
+  margin-bottom:1em;
+  margin-top:1.25em;
 }
 
 .taskEdit:hover {
   text-decoration: none;
 }
+
+/* ==================Delete button functionality============================= */
+
+.taskDelete {
+  color: white;
+  background-color: #FF9060;
+}
+
+.taskDelete:hover {
+  text-decoration: none;
+}
+
 
 /* ==================Add New button functionality============================= */
 .right-buffer, .cancel-edit:hover {
