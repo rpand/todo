@@ -65,7 +65,8 @@ export function fetchTask(id){
     type: FETCH_TASK,
     payload: id
   }
-  
+}
+
   export function incrementID(){
   return {
     type: INCREMENT_ID
