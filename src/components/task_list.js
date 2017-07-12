@@ -23,8 +23,9 @@ renderTask(task){
 
 renderPlaceholder(){
   return (
-    <div>
-        <h1>There are currently no tasks to display. Would you like to <Link to="/new"> create one</Link>?</h1>
+    <div className="centered create-one">
+        <h1>There are currently no tasks to display.</h1>
+        <h1>Would you like to <Link className="create-two" to="/new"> create one</Link>?</h1>
     </div>
   );
 }
