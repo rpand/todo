@@ -10,7 +10,7 @@ class TaskNew extends Component{
     super(props);
     this.state = {value: '',
                   title: '',
-                  priority: '',
+                  priority: '0',
                   datedue: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
