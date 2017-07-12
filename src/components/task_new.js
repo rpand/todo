@@ -11,7 +11,8 @@ class TaskNew extends Component{
     this.state = {value: '',
                   title: '',
                   priority: '0',
-                  datedue: ''};
+                  datedue: '',
+                submit: false};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
 }
@@ -30,10 +31,10 @@ class TaskNew extends Component{
     var today = new Date();
     var time= today.getTime();
     var priority = parseInt(this.state.priority);
-    var dueDate = new Date(this.state.duedate);
+    var dueDate = new Date(this.state.datedue);
     dueDate.setTime(dueDate.getTime() + 21600000);
-    this.props.addTask({"id":nextID,"datecreated":time,"datedue":this.state.datedue,"title":this.state.title,"priority":priority,"done":false});
-    this.setState({ title: '' , priority: '', datedue: ''});
+    this.props.addTask({"id":nextID,"datecreated":time,"datedue":dueDate.getTime(),"title":this.state.title,"priority":priority,"done":false});
+    this.setState({ title: '' , priority: '0', datedue: '', submit: true});
     //this.props.incrementID();
   }
 
@@ -42,6 +43,13 @@ class TaskNew extends Component{
     return(
       <div>
       <Link className= "pure-button home-new" to="/"><i className="fa fa-home" aria-hidden="true"></i>Home</Link>
+      { !this.state.submit ? this.renderForm() : this.renderAlt() }
+    </div>
+    );
+  }
+
+  renderForm() {
+    return(
       <form onSubmit={this.handleSubmit} className="pure-form pure-form-aligned">
         <fieldset>
           <legend>
@@ -90,7 +98,17 @@ class TaskNew extends Component{
           </div>
         </fieldset>
       </form>
-    </div>
+    );
+  }
+
+  renderAlt() {
+    return(
+        <form className="pure-form pure-form-aligned">
+          <fieldset>
+            <legend><h3>Create A New Task</h3></legend>
+            <div>Your task has been created! <Link to="/">Click here to return to the task list.</Link></div>
+          </fieldset>
+        </form>
     );
   }
 }
