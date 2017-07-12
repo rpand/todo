@@ -38,6 +38,8 @@ class TaskNew extends Component{
   render(){
     const { handleSubmit } = this.props;
     return(
+      <div>
+      <Link className= "pure-button home-new" to="/"><i className="fa fa-home" aria-hidden="true"></i>Home</Link>
       <form onSubmit={this.handleSubmit} className="pure-form pure-form-aligned">
         <fieldset>
           <legend>
@@ -50,6 +52,7 @@ class TaskNew extends Component{
               type="text"
               value={this.state.title}
               onChange={this.onInputChange}
+              required
             />
           </div>
 
@@ -59,6 +62,7 @@ class TaskNew extends Component{
               name="priority"
               value={this.state.priority}
               onChange={this.onInputChange}
+              required
             >
               <option value="0">Low</option>
               <option value="1">Medium</option>
@@ -73,6 +77,7 @@ class TaskNew extends Component{
               type="date"
               value={this.state.datedue}
               onChange={this.onInputChange}
+              required
             />
           </div>
 
@@ -80,10 +85,10 @@ class TaskNew extends Component{
             <button className="pure-button pure-button-primary right-buffer" type="submit">Submit</button>
             <Link className= "pure-button cancel-new" to="/">Cancel</Link>
             <div className="divider"/>
-            <Link className= "pure-button home-new left-buffer" to="/">Home</Link>
           </div>
         </fieldset>
       </form>
+    </div>
     );
   }
 }

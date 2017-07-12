@@ -231,6 +231,10 @@ label {
  text-decoration: none;
 }
 
+.home-new {
+  float: right;
+}
+
 .bar_container {
   margin-bottom: 0.5em;
 }
