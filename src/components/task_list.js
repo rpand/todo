@@ -21,6 +21,14 @@ renderTask(task){
     );
 }
 
+renderPlaceholder(){
+  return (
+    <div>
+        <h1>There are no TODOs to display. Would you like to <Link to="/new"> create one?</Link></h1>
+    </div>
+  );
+}
+
 render(){
   const todos = this.filter();
   return(
@@ -32,7 +40,7 @@ render(){
           <h3 className="title centered">Task List</h3>
       </div>
       <BarContainer />
-      {todos.map(this.renderTask)}
+      {todos.length > 0 ? todos.map(this.renderTask) : this.renderPlaceholder()}
     </div>
   );
 }
@@ -96,7 +104,6 @@ sortTasks(sortBy){
       var todoDate = new Date();
       for(var i=0; i<filterdTodos.length; i++){
         todoDate.setTime(filterdTodos[i].datedue);
-        console.log(todoDate.getFullYear()+"-"+todoDate.getMonth()+"-"+todoDate.getDate());
         if(todayDate.getDate() != todoDate.getDate()
           ){
           filterdTodos.splice(i, 1);
