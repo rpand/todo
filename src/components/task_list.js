@@ -24,7 +24,7 @@ renderTask(task){
 renderPlaceholder(){
   return (
     <div>
-        <h1>There are no TODOs to display. Would you like to <Link to="/new"> create one?</Link></h1>
+        <h1>There are currently no tasks to display. Would you like to <Link to="/new"> create one</Link>?</h1>
     </div>
   );
 }
