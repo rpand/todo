@@ -36,7 +36,7 @@ render(){
     <div>
       <div>
         <Link className="pure-button PlusBtn pull-right /new" to="/new">
-          <i className="fa fa-plus" aria-hidden="true"></i>
+          <i className="fa fa-plus PlusIcon" aria-hidden="true"></i>
           </Link>
           <h3 className="title centered">Task List</h3>
       </div>
