@@ -61,12 +61,12 @@ sortTasks(sortBy){
       break;
     case "priorityAsc":
       sortedTodos.sort(function(a, b) {
-        return a.priority > b.priority;
+        return a.priority >= b.priority;
       });
       break;
     case "priorityDesc":
       sortedTodos.sort(function(a, b) {
-        return a.priority < b.priority;
+        return a.priority <= b.priority;
       });
       break;
     case "dueDateAsc":
