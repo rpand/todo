@@ -14,7 +14,11 @@ class BarContainer extends Component {
   }
 }
 
+
   render() {
+    var mobileCheck = false;
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (w < 768){mobileCheck = true;} else {mobileCheck = false;}
     return(
       <div className="bar_container pure-g">
         <div className="pure-u-1">
