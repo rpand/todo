@@ -9,28 +9,28 @@ import BarContainer from './bar_container'
 
 class TaskList extends Component{
   constructor(props) {
-  super(props);
+    super(props);
 
-  this.filter = this.filter.bind(this);
-  this.sortTasks = this.sortTasks.bind(this);
-}
+    this.filter = this.filter.bind(this);
+    this.sortTasks = this.sortTasks.bind(this);
+  }
 
-renderTask(task){
+  renderTask(task){
+      return (
+        <Task key={task.id} task={task} />
+      );
+  }
+
+  renderPlaceholder(){
     return (
-      <Task key={task.id} task={task} />
+      <div className="centered create-one">
+          <h1>There are currently no tasks to display.</h1>
+          <h1>Would you like to <Link className="create-two" to="/new"> create one</Link>?</h1>
+      </div>
     );
-}
+  }
 
-renderPlaceholder(){
-  return (
-    <div className="centered create-one">
-        <h1>There are currently no tasks to display.</h1>
-        <h1>Would you like to <Link className="create-two" to="/new"> create one</Link>?</h1>
-    </div>
-  );
-}
-
-render(){
+  render(){
   const todos = this.filter();
   return(
     <div>
@@ -46,7 +46,7 @@ render(){
   );
 }
 
-sortTasks(sortBy){
+  sortTasks(sortBy){
   var sortedTodos = this.props.tasks.slice();
   switch(sortBy){
     case "alphaAsc":
