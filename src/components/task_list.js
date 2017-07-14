@@ -9,34 +9,34 @@ import BarContainer from './bar_container'
 
 class TaskList extends Component{
   constructor(props) {
-  super(props);
+    super(props);
 
-  this.filter = this.filter.bind(this);
-  this.sortTasks = this.sortTasks.bind(this);
-}
+    this.filter = this.filter.bind(this);
+    this.sortTasks = this.sortTasks.bind(this);
+  }
 
-renderTask(task){
+  renderTask(task){
+      return (
+        <Task key={task.id} task={task} />
+      );
+  }
+
+  renderPlaceholder(){
     return (
-      <Task key={task.id} task={task} />
+      <div className="centered create-one">
+          <h1>There are currently no tasks to display.</h1>
+          <h1>Would you like to <Link className="create-two" to="/new"> create one</Link>?</h1>
+      </div>
     );
-}
+  }
 
-renderPlaceholder(){
-  return (
-    <div className="centered create-one">
-        <h1>There are currently no tasks to display.</h1>
-        <h1>Would you like to <Link className="create-two" to="/new"> create one</Link>?</h1>
-    </div>
-  );
-}
-
-render(){
+  render(){
   const todos = this.filter();
   return(
     <div>
       <div>
         <Link className="pure-button PlusBtn pull-right /new" to="/new">
-          <i className="fa fa-plus" aria-hidden="true"></i>
+          <i className="fa fa-plus PlusIcon" aria-hidden="true"></i>
           </Link>
           <h3 className="title centered">Task List</h3>
       </div>
@@ -46,7 +46,7 @@ render(){
   );
 }
 
-sortTasks(sortBy){
+  sortTasks(sortBy){
   var sortedTodos = this.props.tasks.slice();
   switch(sortBy){
     case "alphaAsc":
@@ -61,12 +61,12 @@ sortTasks(sortBy){
       break;
     case "priorityAsc":
       sortedTodos.sort(function(a, b) {
-        return a.priority > b.priority;
+        return a.priority >= b.priority;
       });
       break;
     case "priorityDesc":
       sortedTodos.sort(function(a, b) {
-        return a.priority < b.priority;
+        return a.priority <= b.priority;
       });
       break;
     case "dueDateAsc":
