@@ -15,7 +15,7 @@ export default function(state=TODOITEMS, action){
     case TOGGLE_COMPLETE:
       var newToDoItems = state.slice();
       newToDoItems.map(function(todo, index) {
-        if(index === action.payload){
+        if(todo.id === action.payload){
           todo.done = !todo.done;
         }
       });
