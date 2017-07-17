@@ -33,6 +33,10 @@
 
   }
 
+  .create-one {
+    padding: 10em;
+  }
+
 }
 
 /*  Mobile-specific Styling  */
@@ -319,9 +323,6 @@ label {
   border: 1px solid red;
 }
 
-.create-one {
-  padding: 10em;
-}
 
 .create-two:hover {
   text-decoration: none;
