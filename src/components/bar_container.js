@@ -87,15 +87,15 @@ renderPriorityFilter(){
       </span>
 
     <span className="desktop-only">
-      <div className="pure-u-1-3 centered">
+      <div className="pure-u-1-3 pure-u-md-7-24 pure-u-lg-1-3 centered">
         <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
           className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
       </div>
-      <div className="pure-u-1-3 centered">
+      <div className="pure-u-1-3 pure-u-md-1-2 pure-u-lg-1-3 centered">
         <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
           className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
       </div>
-      <div className="pure-u-1-3 centered">
+      <div className="pure-u-1-3 pure-u-md-1-6 pure-u-lg-1-3 centered">
         <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
           className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
       </div>
