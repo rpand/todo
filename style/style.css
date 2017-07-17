@@ -41,9 +41,10 @@
     margin-left: 5em;
   }
 
-  .dropdown__content {
+  .shift-right {
     right: 5%;
   }
+
   .checkbox {
       width: 1.75em;
       height: 1.75em;
@@ -53,6 +54,11 @@
 
 }
 /* This is for the plus buttom for inserting todo*/
+
+.fullSpan {
+  width:100%;
+}
+
 .PlusBtn {
   position: absolute;
   top: 1em;
@@ -201,6 +207,7 @@ label {
     position: absolute;
     background-color: #FFFFFF;
     border: 1px solid #207085;
+    z-index: 10000000;
 }
 .dropdown__content li {
     border: 1px solid #207085;

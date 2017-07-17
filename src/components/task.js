@@ -35,16 +35,6 @@ class Task extends Component {
     return "";
   }
 
-  printDocWidth(edit, del) {
-    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (w < 425){
-      return ;
-    }
-    else if(w > 425) {
-      return "Edit ","Delete ";
-    }
-  }
-
   renderButton(mobileCheck){
     var editUrl = "/edit"+this.props.task.id;
 
@@ -54,10 +44,10 @@ class Task extends Component {
         <Dropdown>
           <DropdownTrigger>
             <button className="pure-button">
-              <i className="fa fa-cog" aria-hidden="true"></i>
+              <i className="fa fa-cog SpinIcon" aria-hidden="true"></i>
             </button>
           </DropdownTrigger>
-          <DropdownContent>
+          <DropdownContent className="shift-right">
             <ul className="our-button-children">
               <li>
                 <Link className="pure-button taskEdit" to={editUrl}>

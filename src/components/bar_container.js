@@ -13,7 +13,85 @@ class BarContainer extends Component {
     })
   }
 }
-
+renderTodayFilter(mobileCheck){
+  if (mobileCheck){
+    return(
+      <Dropdown>
+        <DropdownTrigger>
+          <button className="pure-button sort-button filter" id="sort">
+            <i className="fa fa-filter" aria-hidden="true"></i> Day
+          </button>
+        </DropdownTrigger>
+        <DropdownContent>
+          <ul className="our-button-children">
+            <li>
+              <button id="timeFilterToggle"
+              onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
+                className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle fullSpan" : "pure-button filter fullSpan"}>
+                Today
+              </button>
+            </li>
+            <li>
+              <button id="timeFilterToggle"
+              onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
+                className={ !this.props.filters.todayOnly ? "pure-button filter filter-toggle fullSpan" : "pure-button filter fullSpan"}>
+                All
+              </button>
+            </li>
+          </ul>
+        </DropdownContent>
+        </Dropdown>
+    )
+  } else {
+    return(
+    <span>
+      Showing:
+      <button id="timeFilterToggle"
+      onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
+        className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
+        { this.props.filters.todayOnly ? "Today" : "All"}
+      </button>
+    </span>
+  )
+  }
+}
+renderPriorityFilter(mobileCheck){
+  if (mobileCheck){
+    return(
+      <Dropdown>
+        <DropdownTrigger>
+          <button className="pure-button sort-button filter" id="sort">
+            <i className="fa fa-filter" aria-hidden="true"></i> Priority
+          </button>
+        </DropdownTrigger>
+        <DropdownContent>
+          <ul>
+            <li onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}>"Low"</li>
+            <li onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}>"Medium"</li>
+            <li onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}>"High"</li>
+          </ul>
+        </DropdownContent>
+        </Dropdown>
+    )
+  }else{
+    return(
+    <span>
+      <div className="pure-u-1-3 centered">
+        <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
+          className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
+      </div>
+      <div className="pure-u-1-3 centered">
+        <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
+          className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
+      </div>
+      <div className="pure-u-1-3 centered">
+        <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
+          className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
+      </div>
+    </span>
+  )
+  }
+}
 
   render() {
     var mobileCheck = false;
@@ -24,30 +102,10 @@ class BarContainer extends Component {
         <div className="pure-u-1">
           <div className="pure-g">
             <div className="pure-u-1-3 centered">
-            <span>
-              Showing:
-              <button id="timeFilterToggle"
-              onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
-                className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
-                { this.props.filters.todayOnly ? "Today" : "All"}
-              </button>
-            </span>
+              {this.renderTodayFilter(mobileCheck)}
             </div>
             <div className="pure-u-1-3 centered">
-            <span>
-              <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
-                  className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
-              </div>
-              <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
-                  className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
-              </div>
-              <div className="pure-u-1-3 centered">
-                <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
-                  className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
-              </div>
-            </span>
+              {this.renderPriorityFilter(mobileCheck)}
           </div>
           <div className="pure-u-1-3 centered">
           <Dropdown>
@@ -56,7 +114,7 @@ class BarContainer extends Component {
                 Sort <i className="fa fa-bars" aria-hidden="true"></i>
               </button>
             </DropdownTrigger>
-            <DropdownContent>
+            <DropdownContent className={ mobileCheck ? "shift-right" : ""}>
               <ul>
                 <li onClick={() => {this.props.updateFilters({sortBy: "alphaDesc"})}}>Alphabetic Descending</li>
                 <li onClick={() => {this.props.updateFilters({sortBy: "alphaAsc"})}}>Alphabetic Ascending</li>
