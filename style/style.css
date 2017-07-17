@@ -26,6 +26,19 @@
             transform: rotate(360deg);
 }
 
+.CannoliIcon{
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+            transition:         transform .8s ease-in-out;
+    background-image: url("http://icons.veryicon.com/png/Food%20%26%20Drinks/Patisserie/Cannoli.png");
+    background-size: 10px 10px;
+    background-position: center center;
+}
+
+.CannoliIcon:hover {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+}
+
 /* This class is for centering an element */
 .centered {
     text-align: center;
