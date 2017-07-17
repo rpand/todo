@@ -67,10 +67,6 @@
 }
 /* This is for the plus buttom for inserting todo*/
 
-.fullSpan {
-  width:100%;
-}
-
 .PlusBtn {
   position: absolute;
   top: 1em;
@@ -193,7 +189,7 @@ label {
    background: rgb(240,210,120)
 }
 
-/* ======= SORT BUTTON DROPDOWN FUNCTIONALITY ======= */
+/* ======= SORT BUTTON / DROPDOWN FUNCTIONALITY ======= */
 
 .sort-button {
   cursor: pointer;
@@ -240,9 +236,10 @@ label {
   border: none;
 }
 
-.our-button-children .taskEdit {
+.our-button-children a, .our-button-children button {
   width: 100%;
 }
+
 /* ==================Edit and Delete Button Div============================= */
 
 .taskDiv{
@@ -273,7 +270,7 @@ label {
 }
 
 
-/* ==================Add New button functionality============================= */
+/* ==================Add New button ============================= */
 .right-buffer, .cancel-edit:hover {
   margin-right: 1em;
   text-decoration: none;
@@ -315,6 +312,8 @@ label {
   background-color: #a6ccd9;
   color: whitesmoke;
 }
+
+/* === OTHERS === */
 
 .test {
   border: 1px solid red;

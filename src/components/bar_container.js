@@ -28,14 +28,14 @@ renderTodayFilter(){
             <li>
               <button id="timeFilterToggle"
               onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
-                className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle fullSpan" : "pure-button filter fullSpan"}>
+                className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
                 Today
               </button>
             </li>
             <li>
               <button id="timeFilterToggle"
               onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
-                className={ !this.props.filters.todayOnly ? "pure-button filter filter-toggle fullSpan" : "pure-button filter fullSpan"}>
+                className={ !this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
                 All
               </button>
             </li>
@@ -68,10 +68,19 @@ renderPriorityFilter(){
           </button>
         </DropdownTrigger>
         <DropdownContent>
-          <ul>
-            <li onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}>"Low"</li>
-            <li onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}>"Medium"</li>
-            <li onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}>"High"</li>
+          <ul className="our-button-children">
+            <li>
+              <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
+                className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
+            </li>
+            <li>
+              <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
+                className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
+            </li>
+            <li>
+              <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
+                className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
+            </li>
           </ul>
         </DropdownContent>
         </Dropdown>
