@@ -26,6 +26,13 @@
       height: 2.5em;
       margin-top: -0.8em;
   }
+
+  .mobile-only {
+    display: none;
+    visibility: hidden;
+
+  }
+
 }
 
 /*  Mobile-specific Styling  */
@@ -49,6 +56,11 @@
       width: 1.75em;
       height: 1.75em;
       margin-top: -0.8em;
+  }
+
+  .desktop-only {
+    display: none;
+    visibility: hidden;
   }
 
 

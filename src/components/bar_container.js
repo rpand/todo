@@ -13,9 +13,10 @@ class BarContainer extends Component {
     })
   }
 }
-renderTodayFilter(mobileCheck){
-  if (mobileCheck){
+renderTodayFilter(){
     return(
+      <div>
+    <span className="mobile-only">
       <Dropdown>
         <DropdownTrigger>
           <button className="pure-button sort-button filter" id="sort">
@@ -41,10 +42,9 @@ renderTodayFilter(mobileCheck){
           </ul>
         </DropdownContent>
         </Dropdown>
-    )
-  } else {
-    return(
-    <span>
+      </span>
+
+    <span className="desktop-only">
       Showing:
       <button id="timeFilterToggle"
       onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
@@ -52,12 +52,15 @@ renderTodayFilter(mobileCheck){
         { this.props.filters.todayOnly ? "Today" : "All"}
       </button>
     </span>
-  )
-  }
+
+  </div>
+  );
+
 }
-renderPriorityFilter(mobileCheck){
-  if (mobileCheck){
+renderPriorityFilter(){
     return(
+      <div>
+      <span className="mobile-only">
       <Dropdown>
         <DropdownTrigger>
           <button className="pure-button sort-button filter" id="sort">
@@ -72,10 +75,9 @@ renderPriorityFilter(mobileCheck){
           </ul>
         </DropdownContent>
         </Dropdown>
-    )
-  }else{
-    return(
-    <span>
+      </span>
+
+    <span className="desktop-only">
       <div className="pure-u-1-3 centered">
         <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
           className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
@@ -89,8 +91,9 @@ renderPriorityFilter(mobileCheck){
           className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
       </div>
     </span>
-  )
-  }
+
+  </div>
+  );
 }
 
   render() {
@@ -102,10 +105,10 @@ renderPriorityFilter(mobileCheck){
         <div className="pure-u-1">
           <div className="pure-g">
             <div className="pure-u-1-3 centered">
-              {this.renderTodayFilter(mobileCheck)}
+              {this.renderTodayFilter()}
             </div>
             <div className="pure-u-1-3 centered">
-              {this.renderPriorityFilter(mobileCheck)}
+              {this.renderPriorityFilter()}
           </div>
           <div className="pure-u-1-3 centered">
           <Dropdown>

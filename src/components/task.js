@@ -4,43 +4,51 @@ import { toggleComplete, deleteTask } from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown';
+import ReactDOM from 'react-dom';
 
 //A single Task within the Task List
 class Task extends Component {
   constructor(props) {
-  super(props);
+    super(props);
 
-  this.state = { taskId: this.props.task.id };
-}
+    this.renderButton = this.renderButton.bind(this);
 
-  printPriority(priority, mobileCheck) {
-    if(priority == 0 && mobileCheck == false) {
+    this.state = { taskId: this.props.task.id };
+  }
+
+  printPriority(priority) {
+    if(priority == 0) {
       return "Low";
     }
-    else if (priority == 0 && mobileCheck == true) {
-     return "L";
-    }
-    else if(priority == 1 && mobileCheck == false) {
+    else if(priority == 1) {
       return "Medium";
     }
-    else if (priority == 1 && mobileCheck == true) {
-     return "M";
-    }
-    else if(priority == 2 && mobileCheck == false) {
+    else if(priority == 2) {
       return "High";
     }
-    else if (priority == 2 && mobileCheck == true) {
+    return "";
+  }
+
+  printPriorityMobile(priority) {
+    if(priority == 0) {
+     return "L";
+    }
+    else if (priority == 1) {
+     return "M";
+    }
+    else if (priority == 2) {
      return "H";
     }
     return "";
   }
 
-  renderButton(mobileCheck){
-    var editUrl = "/edit"+this.props.task.id;
 
-    if (mobileCheck) {
+  renderButton(){
+    var editUrl = "/edit"+this.props.task.id;
       return(
-        <div className="righted">
+        <div>
+
+        <div className="righted mobile-only">
         <Dropdown>
           <DropdownTrigger>
             <button className="pure-button">
@@ -61,10 +69,8 @@ class Task extends Component {
           </DropdownContent>
           </Dropdown>
         </div>
-      );
-    } else {
-      return(
-        <div className="centered">
+
+        <div className="centered desktop-only">
           <Link className="pure-button taskEdit buttonSizer" to={editUrl}>
             Edit <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
           </Link>
@@ -73,20 +79,19 @@ class Task extends Component {
             Delete <i className="fa fa-trash-o" aria-hidden="true"></i>
           </button>
         </div>
+
+      </div>
       );
-  }
+
 }
 
   render() {
     var dateDue = new Date(this.props.task.datedue);
     dateDue = dateDue.toLocaleDateString();
-    var mobileCheck = false;
-    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (w < 768){mobileCheck = true;} else {mobileCheck = false;}
     return (
       <div className="centered-box" id="box">
         <div className="taskDiv">
-          {this.renderButton(mobileCheck)}
+          {this.renderButton()}
         </div>
         <div className="pure-g">
           <div className="pure-u-1-4 pure-u-md-1-6 box centered">
@@ -95,7 +100,7 @@ class Task extends Component {
             type="checkbox"
             id={this.props.task.id}
             defaultChecked={this.props.task.done}
-            onChange={() => {  this.props.toggleComplete(this.props.task.id)}}
+            onChange={() => { this.props.toggleComplete(this.props.task.id) }}
           />
         </div>
         <div className="pure-u-7-12 pure-u-md-1-2">
@@ -107,8 +112,12 @@ class Task extends Component {
              </div>
         </div>
         <div className="pure-u-1-6 pure-u-md-1-3">
-            <div id="priority">
-              {this.printPriority(this.props.task.priority,mobileCheck)}
+          <div id="priority" className="desktop-only">
+            {this.printPriority(this.props.task.priority)}
+          </div>
+
+            <div id="priority" className="mobile-only">
+              {this.printPriorityMobile(this.props.task.priority)}
             </div>
         </div>
         </div>
