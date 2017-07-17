@@ -26,6 +26,13 @@
       height: 2.5em;
       margin-top: -0.8em;
   }
+
+  .mobile-only {
+    display: none;
+    visibility: hidden;
+
+  }
+
 }
 
 /*  Mobile-specific Styling  */
@@ -41,29 +48,40 @@
     margin-left: 5em;
   }
 
-  .dropdown__content {
+  .shift-right {
     right: 5%;
   }
+
   .checkbox {
       width: 1.75em;
       height: 1.75em;
       margin-top: -0.8em;
   }
 
+  .desktop-only {
+    display: none;
+    visibility: hidden;
+  }
+
 
 }
 /* This is for the plus buttom for inserting todo*/
+
+.fullSpan {
+  width:100%;
+}
+
 .PlusBtn {
   position: absolute;
   top: 1em;
 }
 
-.PlusIcon{
+.SpinIcon{
     -webkit-transition: -webkit-transform .8s ease-in-out;
             transition:         transform .8s ease-in-out;
 }
 
-.PlusIcon:hover {
+.SpinIcon:hover {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
 }
@@ -214,6 +232,7 @@ label {
     position: absolute;
     background-color: #FFFFFF;
     border: 1px solid #207085;
+    z-index: 10000000;
 }
 .dropdown__content li {
     border: 1px solid #207085;

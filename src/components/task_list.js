@@ -36,7 +36,7 @@ class TaskList extends Component{
     <div>
       <div>
         <Link className="pure-button PlusBtn pull-right /new" to="/new">
-          <i className="fa CannoliIcon" aria-hidden="true"></i>
+          <i className="fa fa-plus SpinIcon" aria-hidden="true"></i>
           </Link>
           <h3 className="title centered">Task List</h3>
       </div>
