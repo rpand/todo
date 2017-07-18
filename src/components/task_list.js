@@ -37,11 +37,15 @@ class TaskList extends Component{
       <div>
         <Link className="pure-button PlusBtn pull-right /new" to="/new">
           <i className="fa fa-plus SpinIcon" aria-hidden="true"></i>
-          </Link>
-          <h3 className="title centered">Task List</h3>
+        </Link>
+
+        <h3 className="title centered">To-do List</h3>
       </div>
       <BarContainer />
       {todos.length > 0 ? todos.map(this.renderTask) : this.renderPlaceholder()}
+      <div className="mobile-only centered">
+        <button className="CannoliIcon">Cannoli</button>
+      </div>
     </div>
   );
 }
