@@ -2,90 +2,93 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchTask, editTask } from '../actions';
+import { editTask } from '../actions';
+import { Field, reduxForm, initalize } from 'redux-form';
 
 class TaskEdit extends Component{
   constructor(props) {
     super(props);
 
-    var task = this.props.tasks.find((item) => {return (item.id == this.props.match.params.id)});
-    var formattedDate = new Date(task.datedue).toISOString().slice(0,10); //yyyy-mm-dd
+    var task = this.props.task;
+    var formattedDate = new Date(task.datedue).toISOString().slice(0,10);
     var priority = task.priority;
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.state = { priority: priority, datedue: formattedDate, task: task};
+    this.state = {task: task, priority: priority, datedue: formattedDate};
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
-  componentDidMount(){
-    const id = this.props.match.params.id;
-    fetchTask(id);
+  onInputChange(event){
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render(){
-    const task = this.state.task;
+    const { handleSubmit } = this.props;
 
     return(
-      <form className="pure-form pure-form-aligned">
+      <form className="pure-form pure-form-aligned" onSubmit={handleSubmit(this.onSubmit.bind(this))} >
         <fieldset>
           <legend>Edit Task</legend>
 
           <div className="pure-control-group">
             <label>Task Name</label>
-            <span>{task.title}</span>
+            <span>{this.props.task.title}</span>
           </div>
 
           <div className="pure-control-group">
             <label htmlFor="priority">Priority</label>
-            <select name="priority" defaultValue={this.state.priority} onChange={ event => this.onPriorityChange(event.target.value) }>
-              <option value="2">High</option>
-              <option value="1">Medium</option>
-              <option value="0">Low</option>
-            </select>
-
+            <Field
+              name="priority"
+              component="select"
+              onChange={this.onInputChange}
+              >
+                <option value="0">Low</option>
+                <option value="1">Medium</option>
+                <option value="2">High</option>
+            </Field>
           </div>
 
           <div className="pure-control-group">
             <label htmlFor="datedue">Date Due</label>
-            <input
-              name="priority"
+            <Field
+              name="datedue"
               type="date"
-              defaultValue={this.state.datedue}
-              onChange={event => this.onDateChange(event.target.value) }
+              component="input"
+              onChange={this.onInputChange }
+              required
             />
           </div>
 
           <div className="pure-controls">
-            <Link
-              to="/"
+            <button
               className="pure-button pure-button-primary right-buffer"
-              type="submit"
-              onClick={ this.handleSubmit }>Submit</Link>
+              type="submit">Submit</button>
              <Link className="pure-button cancel-edit" to="/">Cancel</Link>
           </div>
-
         </fieldset>
       </form>
     );
   }
-  onPriorityChange(priority) {
-    this.setState({priority});
-  }
 
-  onDateChange(datedue) {
-    this.setState({datedue});
-  }
-
-  handleSubmit(event){
-    var time = new Date(this.state.datedue);
+  onSubmit(values){
+    event.preventDefault();
+    var time = new Date(values.datedue);
     time.setTime(time.getTime() + 21600000 );
-    this.props.editTask({...this.state.task, priority: parseInt(this.state.priority), datedue: time.getTime()});
+    this.props.editTask({...this.state.task, priority: parseInt(values.priority), datedue: time.getTime()});
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps({ tasks }, ownProps){
+  var id = parseInt(ownProps.match.params.id);
+  var task = tasks.find((item) => {return (item.id == id)});
+  var formattedDate = new Date(task.datedue).toISOString().slice(0,10);
+
   return {
-    tasks: state.tasks
+    task: task,
+    initialValues: {
+          task: task,
+          priority: task.priority,
+          datedue: formattedDate
+        }
   };
 }
 
@@ -93,4 +96,11 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ editTask }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskEdit);
+const editForm = reduxForm({
+  form: 'EditTaskForm',
+  onSubmitSuccess: () => {
+      history.back();
+  }
+})(TaskEdit)
+
+export default connect(mapStateToProps, mapDispatchToProps)(editForm)
