@@ -6,6 +6,13 @@ import { bindActionCreators } from 'redux';
 import { fetchTasks } from '../actions';
 import BarContainer from './bar_container'
 
+export const ALPHA_ASCENDING = "alphaAsc";
+export const ALPHA_DESCENDING = "alphaDesc";
+export const PRIORITY_ASCENDING = "priorityAsc";
+export const PRIORITY_DESCENDING = "priorityDesc";
+export const DUE_DATE_ASCENDING = "dueDateAsc";
+export const DUE_DATE_DESCENDING = "dueDateDesc";
+
 
 class TaskList extends Component{
   constructor(props) {
@@ -35,7 +42,7 @@ class TaskList extends Component{
     return(
       <div>
         <div>
-          <Link className="pure-button PlusBtn pull-right /new" to="/new">
+          <Link className="pure-button PlusBtn pull-right" to="/new">
             <i className="fa fa-plus SpinIcon" aria-hidden="true"></i>
           </Link>
 
@@ -43,6 +50,7 @@ class TaskList extends Component{
         </div>
         <BarContainer />
         {todos.length > 0 ? todos.map(this.renderTask) : this.renderPlaceholder()}
+        
         <div className="mobile-only centered">
           <button className="CannoliIcon">Cannoli</button>
         </div>
@@ -51,41 +59,41 @@ class TaskList extends Component{
   }
 
   sortTasks(sortBy){
-  var sortedTodos = this.props.tasks.slice();
-  switch(sortBy){
-    case "alphaAsc":
+    var sortedTodos = this.props.tasks.slice();
+    switch(sortBy){
+      case ALPHA_ASCENDING:
+          sortedTodos.sort(function(a, b) {
+            return a.title > b.title;
+          });
+          break;
+      case ALPHA_DESCENDING:
         sortedTodos.sort(function(a, b) {
-          return a.title > b.title;
+          return a.title < b.title
         });
         break;
-    case "alphaDesc":
-      sortedTodos.sort(function(a, b) {
-        return a.title < b.title
-      });
-      break;
-    case "priorityAsc":
-      sortedTodos.sort(function(a, b) {
-        return a.priority >= b.priority;
-      });
-      break;
-    case "priorityDesc":
-      sortedTodos.sort(function(a, b) {
-        return a.priority <= b.priority;
-      });
-      break;
-    case "dueDateAsc":
-      sortedTodos.sort(function(a, b) {
-        return a.datedue > b.datedue;
-      });
-      break;
-    case "dueDateDesc":
-      sortedTodos.sort(function(a, b) {
-        return a.datedue < b.datedue;
-      });
-      break;
+      case PRIORITY_ASCENDING:
+        sortedTodos.sort(function(a, b) {
+          return a.priority >= b.priority;
+        });
+        break;
+      case PRIORITY_DESCENDING:
+        sortedTodos.sort(function(a, b) {
+          return a.priority <= b.priority;
+        });
+        break;
+      case DUE_DATE_ASCENDING:
+        sortedTodos.sort(function(a, b) {
+          return a.datedue > b.datedue;
+        });
+        break;
+      case DUE_DATE_DESCENDING:
+        sortedTodos.sort(function(a, b) {
+          return a.datedue < b.datedue;
+        });
+        break;
+    }
+    return sortedTodos;
   }
-  return sortedTodos;
-}
 
   filter(){
     var low = this.props.filters.lowPriority;

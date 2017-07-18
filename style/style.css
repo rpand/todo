@@ -210,10 +210,6 @@ label {
   cursor: pointer;
 }
 
-.sort-button:hover, .sort-button:focus {
-  background-color: #dbebf0;
-}
-
 .dropdown {
     display: inline-block;
     cursor: pointer;
@@ -237,8 +233,8 @@ label {
     padding: 1px 1.5em 1px 1.5em;
 }
 .dropdown__content li:hover {
-    background-color: #207085;
-    color: #FFFFFF;
+    background-color: rgba(230, 230, 230, 0.5);
+    color: black;
 }
 
 .dropdown--active .dropdown__content {
@@ -246,7 +242,7 @@ label {
 }
 
 .dropdown__content .our-button-children li {
-  padding: 0 0 0 0;
+  padding: 0;
   background-color: rgba(0,0,0,0);
   border: none;
 }
@@ -324,7 +320,7 @@ label {
 
 /* ==================== TOGGLE FILTER ==================== */
 .filter-toggle {
-  background-color: #a6ccd9;
+  background-color: #94c2d1;
   color: whitesmoke;
 }
 
