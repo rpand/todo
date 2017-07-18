@@ -78,8 +78,7 @@ class TaskEdit extends Component{
 }
 
 function mapStateToProps({ tasks }, ownProps){
-  var id = parseInt(ownProps.match.params.id);
-  var task = tasks.find((item) => {return (item.id == id)});
+  var task = tasks.find((item) => {return (item.id == ownProps.match.params.id)});
   var formattedDate = new Date(task.datedue).toISOString().slice(0,10);
 
   return {
