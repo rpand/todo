@@ -48,7 +48,7 @@ class Task extends Component {
       return(
         <div>
 
-        <div className="righted mobile-only">
+        <div className="righted mobile-only single-task">
           <Dropdown>
             <DropdownTrigger>
               <button className="pure-button">
@@ -126,7 +126,7 @@ class Task extends Component {
           </div>
 
         </div>
-        
+
       </div>
     );
   }

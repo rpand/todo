@@ -23,18 +23,19 @@ class TaskEdit extends Component{
 
   render(){
     const { handleSubmit } = this.props;
+    const INPUT_GROUP_CLASS = "pure-control-group";
 
     return(
       <form className="pure-form pure-form-aligned" onSubmit={handleSubmit(this.onSubmit.bind(this))} >
         <fieldset>
           <legend>Edit Task</legend>
 
-          <div className="pure-control-group">
+          <div className={INPUT_GROUP_CLASS}>
             <label>Task Name</label>
             <span>{this.props.task.title}</span>
           </div>
 
-          <div className="pure-control-group">
+          <div className={INPUT_GROUP_CLASS}>
             <label htmlFor="priority">Priority</label>
             <Field
               name="priority"
@@ -47,7 +48,7 @@ class TaskEdit extends Component{
             </Field>
           </div>
 
-          <div className="pure-control-group">
+          <div className={INPUT_GROUP_CLASS}>
             <label htmlFor="datedue">Date Due</label>
             <Field
               name="datedue"
@@ -61,7 +62,9 @@ class TaskEdit extends Component{
           <div className="pure-controls">
             <button
               className="pure-button pure-button-primary right-buffer"
-              type="submit">Submit</button>
+              type="submit">
+              Submit
+            </button>
              <Link className="pure-button cancel-edit" to="/">Cancel</Link>
           </div>
         </fieldset>
