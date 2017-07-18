@@ -12,6 +12,12 @@ class SortDropdown extends Component {
     this.state = { sortFunction: (function (a,b){ return a==b; }) };
   }
 
+  renderListItem(sortType, displayString) {
+    return(
+      <li onClick={() => {this.props.updateFilters({sortBy: sortType})}} className={this.checkSort(sortType)}>{displayString}</li>
+    );
+  }
+
   render() {
     return(
       <Dropdown>
@@ -22,12 +28,12 @@ class SortDropdown extends Component {
         </DropdownTrigger>
         <DropdownContent className="shift-right">
           <ul>
-            <li onClick={() => {this.props.updateFilters({sortBy: ALPHA_ASCENDING})}} className={this.checkSort(ALPHA_ASCENDING)}>Alphabetic Ascending</li>
-            <li onClick={() => {this.props.updateFilters({sortBy: ALPHA_DESCENDING})}} className={this.checkSort(ALPHA_DESCENDING)}>Alphabetic Descending</li>
-            <li onClick={() => {this.props.updateFilters({sortBy: PRIORITY_DESCENDING})}} className={this.checkSort(PRIORITY_DESCENDING)}>Priority High to Low</li>
-            <li onClick={() => {this.props.updateFilters({sortBy: PRIORITY_ASCENDING})}} className={this.checkSort(PRIORITY_ASCENDING)}>Priority Low to High</li>
-            <li onClick={() => {this.props.updateFilters({sortBy: DUE_DATE_DESCENDING})}} className={this.checkSort(DUE_DATE_DESCENDING)}>Most Recent to Oldest</li>
-            <li onClick={() => {this.props.updateFilters({sortBy: DUE_DATE_ASCENDING})}} className={this.checkSort(DUE_DATE_ASCENDING)}>Oldest to Most Recent</li>
+            {this.renderListItem(ALPHA_ASCENDING, "Alphabetical Ascending")}
+            {this.renderListItem(ALPHA_DESCENDING, "Alphabetical Descending")}
+            {this.renderListItem(PRIORITY_DESCENDING, "Priority High to Low")}
+            {this.renderListItem(PRIORITY_ASCENDING, "Priority Low to High")}
+            {this.renderListItem(DUE_DATE_DESCENDING, "Most Recent to Oldest")}
+            {this.renderListItem(DUE_DATE_ASCENDING, "Oldest to Most Recent")}
           </ul>
         </DropdownContent>
       </Dropdown>

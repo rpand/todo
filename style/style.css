@@ -62,6 +62,7 @@
     display: none;
     visibility: hidden;
   }
+
   .shift-right {
     right: 5%;
   }
@@ -325,11 +326,9 @@ label {
 }
 
 /* === OTHERS === */
-
 .test {
   border: 1px solid red;
 }
-
 
 .create-two:hover {
   text-decoration: none;

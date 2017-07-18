@@ -11,7 +11,7 @@ class PriorityFilter extends Component {
         <span className="mobile-only">
           <Dropdown>
             <DropdownTrigger>
-              <button className="pure-button sort-button filter" id="sort">
+              <button className="pure-button filter" id="sort">
                 <i className="fa fa-filter" aria-hidden="true"></i> Priority
               </button>
             </DropdownTrigger>
@@ -19,15 +19,15 @@ class PriorityFilter extends Component {
               <ul className="our-button-children">
                 <li>
                   <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
-                    className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
+                    className={ this.getCssClasses(this.props.filters.lowPriority) } id="low_filter" >Low</button>
                 </li>
                 <li>
                   <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
-                    className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
+                    className={ this.getCssClasses(this.props.filters.medPriority) } id="med_filter">Medium</button>
                 </li>
                 <li>
                   <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
-                    className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
+                    className={ this.getCssClasses(this.props.filters.highPriority) } id="high_filter">High</button>
                 </li>
               </ul>
             </DropdownContent>
@@ -37,21 +37,26 @@ class PriorityFilter extends Component {
       <span className="desktop-only">
         <div className="pure-u-1-3 pure-u-md-7-24 pure-u-lg-1-3 centered">
           <button onClick={() => {this.props.updateFilters({lowPriority: !this.props.filters.lowPriority})}}
-            className={ this.props.filters.lowPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="low_filter" >Low</button>
+            className={ this.getCssClasses(this.props.filters.lowPriority) } id="low_filter" >Low</button>
         </div>
         <div className="pure-u-1-3 pure-u-md-1-2 pure-u-lg-1-3 centered">
           <button onClick={() => {this.props.updateFilters({medPriority: !this.props.filters.medPriority})}}
-            className={ this.props.filters.medPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="med_filter">Medium</button>
+            className={ this.getCssClasses(this.props.filters.medPriority) } id="med_filter">Medium</button>
         </div>
         <div className="pure-u-1-3 pure-u-md-1-6 pure-u-lg-1-3 centered">
           <button onClick={() => {this.props.updateFilters({highPriority: !this.props.filters.highPriority})}}
-            className={ this.props.filters.highPriority ? "pure-button filter filter-toggle" : "pure-button filter"} id="high_filter">High</button>
+            className={ this.getCssClasses(this.props.filters.highPriority) } id="high_filter">High</button>
         </div>
       </span>
 
     </div>
     );
   }
+
+  getCssClasses(booleanValue) {
+    return booleanValue ? "pure-button filter filter-toggle" : "pure-button filter";
+  }
+
 }
 
 function mapStateToProps(state) {

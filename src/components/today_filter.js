@@ -6,29 +6,37 @@ import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown'
 
 class TodayFilter extends Component {
   render() {
+    const BUTTON_TOGGLE = "pure-button filter filter-toggle";
+    const BUTTON_UNSELECTED = "pure-button filter";
+
+    const TODAY_LABEL = "Today";
+    const ALL_LABEL = "All";
+
+    const BUTTON_ID = "timeFilterToggle";
+    
     return(
       <div>
         <span className="mobile-only">
           <Dropdown>
             <DropdownTrigger>
-              <button className="pure-button sort-button filter" id="sort">
+              <button className={BUTTON_UNSELECTED} id="sort">
                 <i className="fa fa-filter" aria-hidden="true"></i> Day
               </button>
             </DropdownTrigger>
             <DropdownContent>
               <ul className="our-button-children">
                 <li>
-                  <button id="timeFilterToggle"
+                  <button id={BUTTON_ID}
                   onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
-                    className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
-                    Today
+                    className={ this.props.filters.todayOnly ? BUTTON_TOGGLE : BUTTON_UNSELECTED }>
+                    {TODAY_LABEL}
                   </button>
                 </li>
                 <li>
-                  <button id="timeFilterToggle"
+                  <button id={BUTTON_ID}
                   onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
-                    className={ !this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
-                    All
+                    className={ !this.props.filters.todayOnly ? BUTTON_TOGGLE : BUTTON_UNSELECTED }>
+                    {ALL_LABEL}
                   </button>
                 </li>
               </ul>
@@ -38,10 +46,10 @@ class TodayFilter extends Component {
 
         <span className="desktop-only">
           Showing:
-          <button id="timeFilterToggle"
-          onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
-            className={ this.props.filters.todayOnly ? "pure-button filter filter-toggle" : "pure-button filter"}>
-            { this.props.filters.todayOnly ? "Today" : "All"}
+          <button id={BUTTON_ID}
+            onClick={() => {this.props.updateFilters({todayOnly: !this.props.filters.todayOnly})}}
+            className={ this.props.filters.todayOnly ? BUTTON_TOGGLE : BUTTON_UNSELECTED }>
+            { this.props.filters.todayOnly ? TODAY_LABEL : ALL_LABEL }
           </button>
         </span>
 
