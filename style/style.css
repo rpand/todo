@@ -3,25 +3,98 @@
   .container {
     padding: 0 2em 0 2em;
   }
+
   #box {
     width: 80%;
     }
+
   .popup-container {
     width: 75%;
     margin-top: 3em;
     margin-left: 5em;
   }
+
+  .taskEdit {
+    margin-bottom:1em;
+    margin-top:1.25em;
+  }
   .PlusBtn {
     right: 16.5em;
   }
+  .checkbox {
+      width: 2.5em;
+      height: 2.5em;
+      margin-top: -0.8em;
+  }
+
+  .mobile-only {
+    display: none;
+    visibility: hidden;
+
+  }
+
+  .create-one {
+    padding: 10em;
+  }
+
 }
 
-.PlusIcon{
+/*  Mobile-specific Styling  */
+@media screen and (max-width: 767px) {
+
+  .PlusBtn {
+    right: 1em;
+  }
+
+  .popup-container {
+    width: 75%;
+    margin-top: 3em;
+    margin-left: 5em;
+  }
+
+  .shift-right {
+    right: 5%;
+  }
+
+  .checkbox {
+      width: 1.75em;
+      height: 1.75em;
+      margin-top: -0.8em;
+  }
+
+  .desktop-only {
+    display: none;
+    visibility: hidden;
+  }
+
+
+}
+/* This is for the plus buttom for inserting todo*/
+
+.PlusBtn {
+  position: absolute;
+  top: 1em;
+}
+
+.SpinIcon{
     -webkit-transition: -webkit-transform .8s ease-in-out;
             transition:         transform .8s ease-in-out;
 }
 
-.PlusIcon:hover {
+.SpinIcon:hover {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+}
+
+.CannoliIcon{
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+            transition:         transform .8s ease-in-out;
+    background-image: url("http://icons.veryicon.com/png/Food%20%26%20Drinks/Patisserie/Cannoli.png");
+    background-size: 10px 10px;
+    background-position: center center;
+}
+
+.CannoliIcon:hover {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
 }
@@ -41,15 +114,13 @@
     margin-right: auto;
 }
 
+.righted {
+  text-align: right;
+}
+
 /* This is for the title "Task List" */
 .title {
   padding-top: 1em;
-}
-
-/* This is for the plus buttom for inserting todo*/
-.PlusBtn {
-  position: absolute;
-  top: 1em;
 }
 
 .ToDoList_container {
@@ -74,24 +145,22 @@ label {
 }
 
 .checkbox {
-    width: 2.5em;
-    height: 2.5em;
     border: 2px solid #304560;
 }
 
 #title {
    padding: 1.5em 0px 0px 0px;
-  font-size: 1.5em;
+  font-size: 125%;
 }
 
 #dateDue {
   padding: 0px 0px 2em 0px;
-  font-size: 1em;
+  font-size: 75%;
 }
 
 #priority{
   padding: 1em 2em 1em 0em;
-  font-size: 2em;
+  font-size: 200%;
 }
 
 .box {
@@ -137,7 +206,7 @@ label {
    background: rgb(240,210,120)
 }
 
-/* ======= SORT BUTTON DROPDOWN FUNCTIONALITY ======= */
+/* ======= SORT BUTTON / DROPDOWN FUNCTIONALITY ======= */
 
 .sort-button {
   cursor: pointer;
@@ -163,7 +232,7 @@ label {
     position: absolute;
     background-color: #FFFFFF;
     border: 1px solid #207085;
-
+    z-index: 10000000;
 }
 .dropdown__content li {
     border: 1px solid #207085;
@@ -178,29 +247,35 @@ label {
     display: block;
 }
 
+.dropdown__content .our-button-children li {
+  padding: 0 0 0 0;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+
+.our-button-children a, .our-button-children button {
+  width: 100%;
+}
+
 /* ==================Edit and Delete Button Div============================= */
 
 .taskDiv{
   float: right;
   text-decoration: none;
-
-
 }
 
-/* ==================Edit button functionality============================= */
+/* ==================Edit button============================= */
 
 .taskEdit {
   color: white;
   background-color: #6090FF;
-  margin-bottom:1em;
-  margin-top:1.25em;
 }
 
 .taskEdit:hover {
   text-decoration: none;
 }
 
-/* ==================Delete button functionality============================= */
+/* ==================Delete button============================= */
 
 .taskDelete {
   color: white;
@@ -212,7 +287,7 @@ label {
 }
 
 
-/* ==================Add New button functionality============================= */
+/* ==================Add New button ============================= */
 .right-buffer, .cancel-edit:hover {
   margin-right: 1em;
   text-decoration: none;
@@ -255,13 +330,12 @@ label {
   color: whitesmoke;
 }
 
+/* === OTHERS === */
+
 .test {
   border: 1px solid red;
 }
 
-.create-one {
-  padding: 10em;
-}
 
 .create-two:hover {
   text-decoration: none;
