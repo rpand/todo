@@ -26,7 +26,7 @@ describe('Task', =>{
     expect();
   });
 
-  it('it displays a button for editting', =>{
+  it('it displays a button for editing', =>{
     expect();
   });
 
