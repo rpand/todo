@@ -37,6 +37,10 @@
     padding: 10em;
   }
 
+  .submit-button-group {
+    width: 50%;
+  }
+
 }
 
 /*  Mobile-specific Styling  */
@@ -65,6 +69,15 @@
 
   .shift-right {
     right: 5%;
+  }
+
+  .submit-button-group {
+    width: 100%;
+  }
+
+  .submit-button-group button[type=submit], .submit-button-group a {
+    margin: 0;
+    width: 100%;
   }
 }
 

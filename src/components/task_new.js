@@ -5,6 +5,8 @@ import { addTask, incrementID, getNextID } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { FORM_BUTTON_GROUP_CLASS } from './task_edit'
+
 class TaskNew extends Component {
   constructor(props) {
     super(props);
@@ -41,9 +43,8 @@ class TaskNew extends Component {
   render(){
     return(
       <div>
-      <Link className= "pure-button home-new" to="/"><i className="fa fa-home" aria-hidden="true"></i> Home </Link>
-      { !this.state.submit ? this.renderForm() : this.renderAlt() }
-    </div>
+        { !this.state.submit ? this.renderForm() : this.renderAlt() }
+      </div>
     );
   }
 
@@ -102,10 +103,20 @@ class TaskNew extends Component {
         </div>
 
         <div className="pure-controls">
-          <button
-            type="submit"
-            className="pure-button pure-button-primary right-buffer">Submit</button>
-          <Link to="/" className="pure-button cancel-edit">Cancel</Link>
+
+          <div className="pure-g submit-button-group">
+            <div className={FORM_BUTTON_GROUP_CLASS}>
+              <button
+                className="pure-button pure-button-primary right-buffer"
+                type="submit">
+                Submit
+              </button>
+            </div>
+            <div className={FORM_BUTTON_GROUP_CLASS}>
+              <Link className="pure-button cancel-edit" to="/">Cancel</Link>
+            </div>
+          </div>
+
           <div className="divider"/>
         </div>
         </fieldset>

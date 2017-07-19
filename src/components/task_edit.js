@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { editTask } from '../actions';
 import { Field, reduxForm, initalize } from 'redux-form';
 
+export const FORM_BUTTON_GROUP_CLASS = "pure-u-1-2 centered";
+
 class TaskEdit extends Component{
   constructor(props) {
     super(props);
@@ -60,12 +62,20 @@ class TaskEdit extends Component{
           </div>
 
           <div className="pure-controls">
-            <button
-              className="pure-button pure-button-primary right-buffer"
-              type="submit">
-              Submit
-            </button>
-             <Link className="pure-button cancel-edit" to="/">Cancel</Link>
+
+            <div className="pure-g submit-button-group">
+              <div className={FORM_BUTTON_GROUP_CLASS}>
+                <button
+                  className="pure-button pure-button-primary right-buffer"
+                  type="submit">
+                  Submit
+                </button>
+              </div>
+              <div className={FORM_BUTTON_GROUP_CLASS}>
+                <Link className="pure-button cancel-edit" to="/">Cancel</Link>
+              </div>
+            </div>
+
           </div>
         </fieldset>
       </form>
