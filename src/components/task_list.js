@@ -50,7 +50,7 @@ class TaskList extends Component{
         </div>
         <BarContainer />
         {todos.length > 0 ? todos.map(this.renderTask) : this.renderPlaceholder()}
-        
+
         <div className="mobile-only centered">
           <button className="CannoliIcon">Cannoli</button>
         </div>
@@ -117,8 +117,7 @@ class TaskList extends Component{
       var todoDate = new Date();
       for(var i=0; i<filterdTodos.length; i++){
         todoDate.setTime(filterdTodos[i].datedue);
-        if(todayDate.getDate() != todoDate.getDate()
-          ){
+        if( (todayDate.getDate() != todoDate.getDate()) || (todayDate.getMonth() != todoDate.getMonth()) || (todayDate.getYear() != todoDate.getYear()) ){
           filterdTodos.splice(i, 1);
           i--;
         }
