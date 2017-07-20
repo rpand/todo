@@ -1,11 +1,14 @@
 var data = [
-	{"id":0,"datecreated":1497974997000,"datedue":1498752597000,"title":"Write dummy data","priority":2,"done":true},
-	{"id":1,"datecreated":1498061397000,"datedue":1498752597000,"title":"Find Larry","priority":0,"done":false},
-	{"id":2,"datecreated":1498147797000,"datedue":1498838997000,"title":"Get that kid outta that well","priority":2,"done":false},
-	{"id":3,"datecreated":1498234197000,"datedue":1498838997000,"title":"Buy more tea","priority":0,"done":true},
-	{"id":4,"datecreated":1498320597000,"datedue":1498925397000,"title":"Invest in Pyramid Scheme","priority":1,"done":false},
-	{"id":5,"datecreated":1498406997000,"datedue":1498925397000,"title":"Put warning sign by well","priority":1,"done":false},
-	{"id":6,"datecreated":1498493397000,"datedue":1499011797000,"title":"Buy Shovel","priority":0,"done":true},
-	{"id":7,"datecreated":1498579797000,"datedue":1499011797000,"title":"Dig Well","priority":1,"done":true}
+	{"id":0,"datecreated":1497974997000,"datedue":1499801031000,"title":"Write dummy data","priority":2,"done":true},
+	{"id":1,"datecreated":1498061397000,"datedue":1500665031000,"title":"Find Larry","priority":0,"done":false},
+	{"id":2,"datecreated":1498147797000,"datedue":1500665031000,"title":"Get that kid outta that well","priority":2,"done":false},
+	{"id":3,"datecreated":1498234197000,"datedue":1500924231000,"title":"Buy more tea","priority":0,"done":true},
+	{"id":4,"datecreated":1498320597000,"datedue":1500665031000,"title":"Invest in Pyramid Scheme","priority":1,"done":false},
+	{"id":5,"datecreated":1498406997000,"datedue":1500578631000,"title":"Put warning sign by well","priority":1,"done":false},
+	{"id":6,"datecreated":1498493397000,"datedue":1500233031000,"title":"Buy Shovel","priority":0,"done":true},
+	{"id":7,"datecreated":1498579797000,"datedue":1500319431000,"title":"Dig Well","priority":1,"done":true},
+	{"id":8,"datecreated":1498579797000,"datedue":1500924231000,"title":"Buy A Cannoli","priority":1,"done":false},
+	{"id":9,"datecreated":1498579797000,"datedue":1500405831000,"title":"Be More Terse","priority":1,"done":true},
+	{"id":10,"datecreated":1498579797000,"datedue":1500924231000,"title":"Buy More Cannolis","priority":1,"done":false}
 ]
   export default data;

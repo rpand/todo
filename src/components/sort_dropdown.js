@@ -32,8 +32,8 @@ class SortDropdown extends Component {
             {this.renderListItem(ALPHA_DESCENDING, "Alphabetical Descending")}
             {this.renderListItem(PRIORITY_DESCENDING, "Priority High to Low")}
             {this.renderListItem(PRIORITY_ASCENDING, "Priority Low to High")}
-            {this.renderListItem(DUE_DATE_DESCENDING, "Most Recent to Oldest")}
-            {this.renderListItem(DUE_DATE_ASCENDING, "Oldest to Most Recent")}
+            {this.renderListItem(DUE_DATE_DESCENDING, "Due The Soonest")}
+            {this.renderListItem(DUE_DATE_ASCENDING, "Due The Latest")}
           </ul>
         </DropdownContent>
       </Dropdown>

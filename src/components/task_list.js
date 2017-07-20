@@ -50,10 +50,6 @@ class TaskList extends Component{
         </div>
         <BarContainer />
         {todos.length > 0 ? todos.map(this.renderTask) : this.renderPlaceholder()}
-
-        <div className="mobile-only centered">
-          <button className="CannoliIcon">Cannoli</button>
-        </div>
       </div>
     );
   }
@@ -63,32 +59,32 @@ class TaskList extends Component{
     switch(sortBy){
       case ALPHA_ASCENDING:
           sortedTodos.sort(function(a, b) {
-            return a.title > b.title;
+            return a.title.localeCompare(b.title);
           });
           break;
       case ALPHA_DESCENDING:
         sortedTodos.sort(function(a, b) {
-          return a.title < b.title
+          return b.title.localeCompare(a.title);
         });
         break;
       case PRIORITY_ASCENDING:
         sortedTodos.sort(function(a, b) {
-          return a.priority >= b.priority;
+          return a.priority - b.priority;
         });
         break;
       case PRIORITY_DESCENDING:
         sortedTodos.sort(function(a, b) {
-          return a.priority <= b.priority;
+          return b.priority - a.priority;
         });
         break;
       case DUE_DATE_ASCENDING:
         sortedTodos.sort(function(a, b) {
-          return a.datedue > b.datedue;
+          return a.datedue - b.datedue;
         });
         break;
       case DUE_DATE_DESCENDING:
         sortedTodos.sort(function(a, b) {
-          return a.datedue < b.datedue;
+          return b.datedue - a.datedue;
         });
         break;
     }
