@@ -13,8 +13,7 @@ class TaskNew extends Component {
     this.state = {value: '',
                   title: '',
                   priority: '0',
-                  datedue: '',
-                  submit: false};
+                  datedue: ''};
 
      this.onInputChange = this.onInputChange.bind(this);
   }
@@ -37,7 +36,10 @@ class TaskNew extends Component {
     dueDate.setTime(dueDate.getTime() + 21600000);
     this.props.addTask({...this.state.task, title: values.title, priority: priority,
       datedue: dueDate.getTime(), id: nextID, datecreated: time, done: false});
-    this.setState({ title: '' , priority: '0', datedue: '', submit: true});
+    this.setState({ title: '' , priority: '0', datedue: ''});
+
+    //redirect to task list page
+    this.props.history.push('/');
   }
 
   render(){
@@ -123,17 +125,6 @@ class TaskNew extends Component {
       </form>
     );
   }
-
-  renderAlt() {
-   return(
-       <form className="pure-form pure-form-aligned">
-         <fieldset>
-           <legend><h3>Create A New Task</h3></legend>
-           <div>Your task has been created! <Link to="/">Click here to return to the task list.</Link></div>
-         </fieldset>
-       </form>
-   );
- }
 }
 
   function mapStateToProps(state) {
