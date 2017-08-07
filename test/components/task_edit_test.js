@@ -1,5 +1,5 @@
 import {renderComponent, expect} from '../test_helper';
-import TaskEdit from '../../src/components/task_edit';
+import TaskEdit from '../../src/containers/task_edit';
 
 describe('Task Edit', () => {
 
@@ -8,7 +8,7 @@ describe('Task Edit', () => {
   });
 
   it('', () => {
-    
+
   });
 
 

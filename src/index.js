@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducers from './reducers';
 import TaskList from './components/task_list';
-import TaskEdit from './components/task_edit';
+import TaskEdit from './containers/task_edit';
 import TaskNew from './components/task_new';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);

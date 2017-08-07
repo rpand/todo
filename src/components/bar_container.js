@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PriorityFilter from './priority_filter';
 import TodayFilter from './today_filter';
 import SortDropdown from './sort_dropdown';

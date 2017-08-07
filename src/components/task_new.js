@@ -5,7 +5,7 @@ import { addTask, incrementID, getNextID } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { FORM_BUTTON_GROUP_CLASS } from './task_edit'
+import { FORM_BUTTON_GROUP_CLASS } from '../containers/task_edit'
 
 class TaskNew extends Component {
   constructor(props) {
